@@ -48,11 +48,6 @@ kotlin {
     }
     
     sourceSets {
-        
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-        }
         commonMain.dependencies {
             implementation(libs.androidx.lifecycle)
             implementation(compose.runtime)
@@ -61,6 +56,19 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(libs.coil)
+            implementation(libs.coil.ktor)
+        }
+        androidMain.dependencies {
+            implementation(compose.preview)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.ktor.okhttp)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin)
+        }
+        wasmJsMain.dependencies {
+            implementation(libs.ktor.js)
         }
     }
 

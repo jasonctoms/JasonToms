@@ -13,11 +13,11 @@ class StartScreenViewModel : ViewModel() {
     }
 
     fun togglePicture() {
-        viewState.update { copy(showPicture = !showPicture) }
+        viewState.update { copy(showImage = !showImage) }
     }
 }
 
 data class StartScreenViewState(
-    val showPicture: Boolean = false,
+    val showImage: Boolean = false,
     val greeting: String = "",
 )
