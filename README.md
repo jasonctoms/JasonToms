@@ -1,1 +1,3 @@
-This is hopefully going to be a website and/or an app one day.
+This is the WIP "portfolio" site for myself.
+
+You can view the site at https://jasontoms.com/
