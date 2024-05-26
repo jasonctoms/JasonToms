@@ -1,12 +1,12 @@
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import start.StartScreen
+import theme.AppTheme
 
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
+    AppTheme {
         StartScreen()
     }
 }
