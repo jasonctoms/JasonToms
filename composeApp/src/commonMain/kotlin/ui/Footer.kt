@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalUriHandler
 import getPlatform
 import jasontoms.composeapp.generated.resources.Res
@@ -23,7 +24,7 @@ import utils.VerticalSpacer
 fun Footer() {
     val uriHandler = LocalUriHandler.current
     val platform = remember { getPlatform() }
-    Column {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         VerticalSpacer(Dimens.large)
         Text(
             text = stringResource(Res.string.footer, platform.name),

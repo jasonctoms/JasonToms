@@ -13,8 +13,10 @@ class StartScreenViewModel : ViewModel() {
     }
 
     private fun buildStartScreenList() {
-        val list = buildList<StartScreenItem> {
+        val list = buildList {
+            add(StartScreenItem.ProfilePhoto)
             add(StartScreenItem.Biography)
+            add(StartScreenItem.Footer)
         }
         viewState.update { copy(items = list) }
     }

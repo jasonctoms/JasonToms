@@ -19,6 +19,7 @@ fun FlippableCard(
     frontCardConfig: CardConfig = CardConfig(colors = CardDefaults.cardColors()),
     backCardContent: @Composable () -> Unit,
     backCardConfig: CardConfig = CardConfig(colors = CardDefaults.cardColors()),
+    flipDirection: FlipDirection = FlipDirection.HORIZONTAL,
     cardFlipping: (faceUp: Boolean) -> Unit = {},
 ) {
     var faceUp by remember { mutableStateOf(true) }
@@ -40,7 +41,12 @@ fun FlippableCard(
         back = {
             Card(
                 // since the box in the layout is rotated, we need to un-rotate the content
-                modifier = cardModifier.graphicsLayer { rotationX = -180f },
+                modifier = cardModifier.graphicsLayer {
+                    when (flipDirection) {
+                        FlipDirection.HORIZONTAL -> rotationY = -180f
+                        FlipDirection.VERTICAL -> rotationX = -180f
+                    }
+                },
                 colors = backCardConfig.colors,
                 border = backCardConfig.border,
                 onClick = {
@@ -51,6 +57,7 @@ fun FlippableCard(
                 backCardContent()
             }
         },
+        flipDirection = flipDirection,
     )
 }
 

@@ -24,6 +24,7 @@ fun DoubleSidedLayout(
     faceUp: Boolean,
     front: @Composable () -> Unit,
     back: @Composable () -> Unit,
+    flipDirection: FlipDirection,
     modifier: Modifier = Modifier,
 ) {
     val rotation by animateFloatAsState(
@@ -34,10 +35,19 @@ fun DoubleSidedLayout(
     // we do not want to switch the content until the flip is half way done and both sides are "invisible"
     val frontVisible by derivedStateOf { rotation in 0f..90f }
 
-    Box(modifier = modifier.graphicsLayer { rotationX = rotation }) {
+    Box(
+        modifier = modifier.graphicsLayer {
+            when (flipDirection) {
+                FlipDirection.HORIZONTAL -> rotationY = rotation
+                FlipDirection.VERTICAL -> rotationX = rotation
+            }
+        }
+    ) {
         if (frontVisible) front() else back()
     }
 }
+
+enum class FlipDirection { VERTICAL, HORIZONTAL }
 
 @Preview
 @Composable
@@ -55,5 +65,6 @@ fun TestFlip() {
                 Text(modifier = Modifier.padding(Dimens.medium), text = "Back")
             }
         },
+        flipDirection = FlipDirection.VERTICAL,
     )
 }

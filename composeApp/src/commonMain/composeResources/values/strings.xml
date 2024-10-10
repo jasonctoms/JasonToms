@@ -1,5 +1,5 @@
 <resources>
     <string name="footer">Written with Compose Multiplatform for %1$s!</string>
     <string name="see_on_github">Check it out on GitHub</string>
-    <string name="bio">I am an Android developer and Engineering Manager at Stø (BankID BankAxept). I have been making Android apps for 8 years, and have been an engineer for 11. I like my cats, tv shows, single player story-driven games, and avoiding conversations about hobbies so people don't think I am boring.</string>
+    <string name="bio">I am an Android developer and Engineering Manager at Stø (BankID BankAxept). I have been making Android apps for %1$s years, and have been an engineer for %2$s. I like my cats, tv shows, single player story-driven games, and avoiding conversations about hobbies so people don't think I am boring.</string>
 </resources>

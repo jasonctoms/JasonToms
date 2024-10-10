@@ -36,6 +36,7 @@ fun StartScreen(viewModel: StartScreenViewModel = viewModel { StartScreenViewMod
 
         items(viewState.items) { item ->
             when (item) {
+                StartScreenItem.ProfilePhoto -> ProfilePhoto()
                 StartScreenItem.Biography -> BiographyCard(modifier = Modifier.widthIn(max = 1000.dp))
                 is StartScreenItem.Project -> TODO()
                 StartScreenItem.Footer -> Footer()
@@ -49,8 +50,8 @@ private fun TemporaryDisclaimer() {
     Text(
         modifier = Modifier.sizeIn(maxWidth = 400.dp),
         text = "Disclaimer: This page is currently under construction and a playground to learn how Kotlin " +
-                "Multiplatform works. If you want to help make it prettier or give some design ideas, feel free to " +
-                "contribute or start a discussion with the GitHub link at the bottom of the page.",
+                "Multiplatform Wasm works. If you want to help make it prettier or give some design ideas, feel free " +
+                "to contribute or start a discussion with the GitHub link at the bottom of the page.",
         color = MaterialTheme.colorScheme.onBackground,
         style = MaterialTheme.typography.bodySmall,
         textAlign = TextAlign.Center,

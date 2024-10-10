@@ -58,6 +58,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.coil)
             implementation(libs.coil.ktor)
+            implementation(libs.kotlinx.datetime)
         }
         androidMain.dependencies {
             implementation(compose.preview)
