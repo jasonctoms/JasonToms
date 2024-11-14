@@ -2,47 +2,56 @@ package ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import jasontoms.composeapp.generated.resources.Res
+import jasontoms.composeapp.generated.resources.important_things
+import jasontoms.composeapp.generated.resources.things_i_have_worked_on
+import org.jetbrains.compose.resources.stringResource
 import theme.Dimens
+import utils.VerticalSpacer
 
 @Composable
-fun StartScreen(viewModel: StartScreenViewModel = viewModel { StartScreenViewModel() }) {
-    val viewState by viewModel.viewState.asState()
-    LazyColumn(
+fun StartScreen() {
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.background),
+            .background(color = MaterialTheme.colorScheme.background)
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(Dimens.medium),
-        contentPadding = PaddingValues(Dimens.small)
     ) {
-        item {
-            TemporaryDisclaimer()
-        }
-
-        items(viewState.items) { item ->
-            when (item) {
-                StartScreenItem.ProfilePhoto -> ProfilePhoto()
-                StartScreenItem.Biography -> BiographyCard(modifier = Modifier.widthIn(max = 1000.dp))
-                is StartScreenItem.Project -> TODO()
-                StartScreenItem.Footer -> Footer()
-            }
-        }
+        ScreenHeader()
+        SectionHeader(stringResource(Res.string.important_things))
+        ImportantThings()
+        SectionHeader(stringResource(Res.string.things_i_have_worked_on))
+        VerticalSpacer(Dimens.large)
+        Text(text = "SECTION UNDER CONSTRUCTION", color = MaterialTheme.colorScheme.onBackground)
+        VerticalSpacer(Dimens.extraLarge)
+        TemporaryDisclaimer()
+        Footer()
     }
+}
+
+@Composable
+private fun SectionHeader(header: String) {
+    Text(
+        modifier = Modifier.padding(horizontal = Dimens.medium),
+        text = header,
+        style = MaterialTheme.typography.headlineMedium,
+        color = MaterialTheme.colorScheme.onBackground,
+    )
 }
 
 @Composable

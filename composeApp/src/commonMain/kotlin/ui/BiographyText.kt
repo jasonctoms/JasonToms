@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +25,7 @@ import theme.Dimens
 val profileImageSize = 200.dp
 
 @Composable
-fun BiographyCard(modifier: Modifier = Modifier) {
+fun BiographyText(modifier: Modifier = Modifier) {
     val today = remember {
         Clock.System.todayIn(TimeZone.currentSystemDefault())
     }
@@ -38,23 +37,19 @@ fun BiographyCard(modifier: Modifier = Modifier) {
         val firstAndroidJob = LocalDate(2016, 8, 1)
         (today - firstAndroidJob).years
     }
-    Card(modifier = modifier) {
-        Column(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(Dimens.medium)
-        ) {
-            Text(
-                text = stringResource(Res.string.bio, yearsAsAndroidDeveloper, yearsAsEngineer),
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
-    }
+
+    Text(
+        modifier = modifier.padding(Dimens.medium),
+        text = stringResource(Res.string.bio, yearsAsAndroidDeveloper, yearsAsEngineer),
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onBackground,
+    )
+
 }
 
 @Preview
 @Composable
-private fun BiographyCardPreview() {
+private fun BiographyTextPreview() {
     AppTheme {
         Column(
             modifier = Modifier
@@ -62,7 +57,7 @@ private fun BiographyCardPreview() {
                 .background(color = MaterialTheme.colorScheme.background)
                 .padding(Dimens.small)
         ) {
-            BiographyCard()
+            BiographyText()
         }
     }
 }
