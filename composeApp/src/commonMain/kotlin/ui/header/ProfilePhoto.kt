@@ -1,4 +1,4 @@
-package ui
+package ui.header
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

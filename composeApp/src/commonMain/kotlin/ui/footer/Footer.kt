@@ -1,4 +1,4 @@
-package ui
+package ui.footer
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Icon
@@ -26,6 +26,8 @@ fun Footer(modifier: Modifier = Modifier) {
     val uriHandler = LocalUriHandler.current
     val platform = remember { getPlatform() }
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+        VerticalSpacer(Dimens.extraLarge)
+        TemporaryDisclaimer()
         VerticalSpacer(Dimens.large)
         Text(
             text = stringResource(Res.string.footer, platform.name),
@@ -44,5 +46,6 @@ fun Footer(modifier: Modifier = Modifier) {
                 color = MaterialTheme.colorScheme.onBackground
             )
         }
+        VerticalSpacer(Dimens.medium)
     }
 }

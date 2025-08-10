@@ -1,6 +1,5 @@
-package ui
+package ui.personal
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,22 +12,21 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 import coil3.compose.AsyncImage
 import jasontoms.composeapp.generated.resources.Res
-import jasontoms.composeapp.generated.resources.important_things
-import jasontoms.composeapp.generated.resources.important_things_description
+import jasontoms.composeapp.generated.resources.personal_message
 import org.jetbrains.compose.resources.stringResource
 import theme.Dimens
 import theme.components.AdaptiveFlowRow
 import theme.components.ItemsPerRow
 import theme.components.VerticalSpacer
+import ui.Section
+import ui.WebsiteSection
 import utils.ImageUrls
 
 @Composable
 fun PersonalContent(modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
-        SectionHeader(stringResource(Res.string.important_things))
-        VerticalSpacer(Dimens.small)
+    Section(section = WebsiteSection.PERSONAL, modifier = modifier) {
         Text(
-            text = stringResource(Res.string.important_things_description),
+            text = stringResource(Res.string.personal_message),
             color = MaterialTheme.colorScheme.onBackground
         )
         VerticalSpacer(Dimens.small)

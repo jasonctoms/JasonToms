@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import theme.Previews
 import kotlin.math.PI
 import kotlin.math.sin
-import kotlin.math.sqrt
 
 @Previews
 @Composable
@@ -32,10 +31,10 @@ fun WebsiteBackground() {
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
             animation = tween(
-                durationMillis = 6000,
+                durationMillis = 15000,
                 easing = LinearEasing
             ),
-            repeatMode = RepeatMode.Reverse
+            repeatMode = RepeatMode.Restart
         )
     )
 
@@ -63,14 +62,9 @@ private fun DrawScope.drawTexturedBackground(
     val width = size.width
     val height = size.height
 
-    val dotSpacing = 10.dp.toPx()
-    val dotRadius = (pulseValue * 1.5f).dp.toPx()
-    val dotAlpha = 0.3f + pulseValue * 0.2f
-
     val gradientBrush = Brush.radialGradient(
         colors = listOf(
-            baseColor,
-            accentColor.copy(alpha = dotAlpha * 0.5f),
+            accentColor.copy(alpha = 0.05f),
             baseColor
         ),
         center = Offset(width * 0.5f, height * 0.3f),
@@ -82,42 +76,28 @@ private fun DrawScope.drawTexturedBackground(
         size = size
     )
 
-    val cols = (width / dotSpacing).toInt() + 2
-    val rows = (height / dotSpacing).toInt() + 2
+    val dotSpacing = 10.dp.toPx()
+    val baseDotRadius = 1.dp.toPx()
+    val baseDotAlpha = 0.2f
+
+    val cols = (width / dotSpacing).toInt() + 1
+    val rows = (height / dotSpacing).toInt() + 1
 
     for (col in 0..cols) {
         for (row in 0..rows) {
-            val x = col * dotSpacing + (if (row % 2 == 0) 0f else dotSpacing * 0.5f)
+            val x = col * dotSpacing
             val y = row * dotSpacing
 
-            if (x <= width + dotSpacing && y <= height + dotSpacing) {
-                val distance = sqrt(
-                    (x - width * 0.5f) *
-                            (x - width * 0.5f) + (y - height * 0.5f) *
-                            (y - height * 0.5f)
-                )
-                val wave = sin(distance * 0.01f + pulseValue * PI * 2) * 0.3f + 0.7f
-                val currentAlpha = dotAlpha * wave
+            val wave = sin((x + y) * 0.02f + pulseValue * PI * 2f)
+            val waveFactor = (wave * 0.5f + 0.5f).toFloat()
+            val currentRadius = baseDotRadius * (1f + waveFactor * 0.5f)
+            val currentAlpha = baseDotAlpha * (1f + waveFactor)
 
-                drawCircle(
-                    color = accentColor.copy(alpha = currentAlpha.toFloat()),
-                    radius = (dotRadius * wave).toFloat(),
-                    center = Offset(x, y)
-                )
-            }
+            drawCircle(
+                color = accentColor.copy(alpha = currentAlpha),
+                radius = currentRadius,
+                center = Offset(x, y)
+            )
         }
-    }
-
-    // Add subtle noise overlay
-    repeat(200) {
-        val x = (0..width.toInt()).random().toFloat()
-        val y = (0..height.toInt()).random().toFloat()
-        val size = (0.5f + pulseValue * 0.5f).dp.toPx()
-
-        drawCircle(
-            color = accentColor.copy(alpha = 0.1f + pulseValue * 0.05f),
-            radius = size,
-            center = Offset(x, y)
-        )
     }
 }

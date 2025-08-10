@@ -1,4 +1,4 @@
-package ui
+package ui.header
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -38,7 +38,9 @@ fun ScreenHeader(modifier: Modifier = Modifier) {
             .height(IntrinsicSize.Min)
     ) {
         AsyncImage(
-            modifier = Modifier.fillMaxSize().sizeIn(maxHeight = 500.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .sizeIn(maxHeight = 500.dp),
             model = ImageUrls.SOGNEFJORD.url,
             contentDescription = null,
             contentScale = ContentScale.Crop
@@ -59,7 +61,7 @@ fun ScreenHeader(modifier: Modifier = Modifier) {
         ContentColumn(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(vertical = Dimens.medium, horizontal = Dimens.small)
+                .padding(vertical = Dimens.medium)
         ) {
             if (widthClass == WindowWidthSizeClass.Compact) {
                 Column(
@@ -68,7 +70,6 @@ fun ScreenHeader(modifier: Modifier = Modifier) {
                     verticalArrangement = Arrangement.spacedBy(Dimens.small),
                 ) {
                     ProfilePhoto()
-                    HorizontalSpacer(Dimens.medium)
                     BiographyText()
                 }
             } else {
