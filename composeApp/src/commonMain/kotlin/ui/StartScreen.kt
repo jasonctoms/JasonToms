@@ -1,6 +1,5 @@
 package ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,13 +22,14 @@ import theme.Dimens
 import theme.Previews
 import theme.components.ContentColumn
 import theme.components.VerticalSpacer
+import theme.components.WebsiteBackground
 
 @Composable
 fun StartScreen() {
+    WebsiteBackground()
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.background)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(Dimens.medium),

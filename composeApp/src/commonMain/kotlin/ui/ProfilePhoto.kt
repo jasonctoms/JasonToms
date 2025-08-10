@@ -22,6 +22,7 @@ import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.derpdroid
 import jasontoms.composeapp.generated.resources.ic_github
 import jasontoms.composeapp.generated.resources.ic_linkedin
+import jasontoms.composeapp.generated.resources.ic_sessionize
 import org.jetbrains.compose.resources.painterResource
 import theme.Dimens
 import theme.components.FlippableCard
@@ -77,12 +78,21 @@ private fun SocialLinks() {
     Row {
         IconButton(onClick = { uriHandler.openUri("https://www.linkedin.com/in/jasonctoms/") }) {
             Image(
+                modifier = Modifier.size(24.dp),
                 painter = painterResource(Res.drawable.ic_linkedin),
                 contentDescription = "LinkedIn"
             )
         }
+        IconButton(onClick = { uriHandler.openUri("https://sessionize.com/jason-toms/") }) {
+            Image(
+                modifier = Modifier.size(24.dp),
+                painter = painterResource(Res.drawable.ic_sessionize),
+                contentDescription = "Sessionize"
+            )
+        }
         IconButton(onClick = { uriHandler.openUri("https://github.com/jasonctoms") }) {
             Icon(
+                modifier = Modifier.size(24.dp),
                 painter = painterResource(Res.drawable.ic_github),
                 contentDescription = "GitHub"
             )
