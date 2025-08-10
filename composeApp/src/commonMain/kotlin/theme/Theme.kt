@@ -10,11 +10,17 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.IntSize
 
 @Composable
 fun AppTheme(content: @Composable () -> Unit) {
-    val windowSizeClass = getWindowSizeClass()
+    val windowInfo = LocalWindowInfo.current
+    val density = LocalDensity.current
+    val windowSizeClass = remember(windowInfo.containerSize, density) {
+        getWindowSizeClass(containerSize = windowInfo.containerSize, density = density)
+    }
     CompositionLocalProvider(LocalWindowSizeClass provides windowSizeClass) {
         MaterialTheme(colorScheme = if (isSystemInDarkTheme()) darkScheme else lightScheme) {
             content()
@@ -23,22 +29,22 @@ fun AppTheme(content: @Composable () -> Unit) {
 }
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-@Composable
-private fun getWindowSizeClass(): WindowSizeClass {
-    val windowInfo = LocalWindowInfo.current
-    val density = LocalDensity.current
-    val dpSize = remember(windowInfo.containerSize, density) {
-        with(density) {
-            DpSize(
-                width = windowInfo.containerSize.width.toDp(),
-                height = windowInfo.containerSize.height.toDp()
-            )
-        }
+private fun getWindowSizeClass(containerSize: IntSize, density: Density): WindowSizeClass? {
+    if (containerSize.width <= 0 || containerSize.height <= 0) {
+        return null
     }
-    return WindowSizeClass.calculateFromSize(dpSize)
+    val dpSize = with(density) {
+        DpSize(
+            width = containerSize.width.toDp(),
+            height = containerSize.height.toDp()
+        )
+    }
+    val windowSizeClass = WindowSizeClass.calculateFromSize(dpSize)
+    println("Window Size Class: $windowSizeClass, Dp Size: $dpSize")
+    return windowSizeClass
 }
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-val LocalWindowSizeClass = compositionLocalOf<WindowSizeClass> {
+val LocalWindowSizeClass = compositionLocalOf<WindowSizeClass?> {
     error("LocalWindowSizeClass not initialized")
 }

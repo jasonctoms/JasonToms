@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import jasontoms.composeapp.generated.resources.Res
-import jasontoms.composeapp.generated.resources.important_things
 import jasontoms.composeapp.generated.resources.things_i_have_worked_on
 import org.jetbrains.compose.resources.stringResource
 import theme.AppTheme
@@ -38,8 +37,8 @@ fun StartScreen() {
         ScreenHeader()
         ContentColumn(modifier = Modifier.fillMaxSize().padding(horizontal = Dimens.small)) {
             PersonalContent()
-            SectionHeader(stringResource(Res.string.things_i_have_worked_on))
             VerticalSpacer(Dimens.large)
+            SectionHeader(stringResource(Res.string.things_i_have_worked_on))
             Text(
                 text = "SECTION UNDER CONSTRUCTION",
                 color = MaterialTheme.colorScheme.onBackground
@@ -76,7 +75,7 @@ private fun TemporaryDisclaimer(modifier: Modifier = Modifier) {
 
 @Previews
 @Composable
-fun StartScreenPreview(){
+fun StartScreenPreview() {
     AppTheme {
         StartScreen()
     }

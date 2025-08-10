@@ -31,8 +31,7 @@ import utils.ImageUrls
 
 @Composable
 fun ScreenHeader(modifier: Modifier = Modifier) {
-
-    val widthClass = LocalWindowSizeClass.current.widthSizeClass
+    val widthClass = LocalWindowSizeClass.current?.widthSizeClass
     Box(
         modifier = modifier
             .fillMaxWidth()
