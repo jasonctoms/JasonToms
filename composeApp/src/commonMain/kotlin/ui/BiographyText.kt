@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.bio
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
@@ -21,9 +20,12 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import theme.AppTheme
 import theme.Dimens
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 val profileImageSize = 200.dp
 
+@OptIn(ExperimentalTime::class)
 @Composable
 fun BiographyText(modifier: Modifier = Modifier) {
     val today = remember {

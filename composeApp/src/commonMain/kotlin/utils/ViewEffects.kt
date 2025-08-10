@@ -24,9 +24,9 @@ class ViewEffects<T> {
         effects.receiveAsFlow().collect { block(it) }
     }
 
-    context(ViewModel)
+    context(vm: ViewModel)
     fun send(effect: T) {
-        viewModelScope.launch {
+        vm.viewModelScope.launch {
             effects.send(effect)
         }
     }

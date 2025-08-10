@@ -25,9 +25,9 @@ class ViewState<T>(initialState: T) {
     /**
      * Update the view state, most likely by using copy() on the current state.
      *
-     * There is a context receiver on this function to ensure it can only be called from a ViewModel.
+     * There is a context parameter on this function to ensure it can only be called from a ViewModel.
      */
-    context(ViewModel)
+    context(_: ViewModel)
     fun update(function: T.() -> T) {
         _state.update(function)
     }
