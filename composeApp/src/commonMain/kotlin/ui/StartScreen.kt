@@ -19,8 +19,11 @@ import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.important_things
 import jasontoms.composeapp.generated.resources.things_i_have_worked_on
 import org.jetbrains.compose.resources.stringResource
+import theme.AppTheme
 import theme.Dimens
-import utils.VerticalSpacer
+import theme.Previews
+import theme.components.ContentColumn
+import theme.components.VerticalSpacer
 
 @Composable
 fun StartScreen() {
@@ -33,21 +36,25 @@ fun StartScreen() {
         verticalArrangement = Arrangement.spacedBy(Dimens.medium),
     ) {
         ScreenHeader()
-        SectionHeader(stringResource(Res.string.important_things))
-        ImportantThings()
-        SectionHeader(stringResource(Res.string.things_i_have_worked_on))
-        VerticalSpacer(Dimens.large)
-        Text(text = "SECTION UNDER CONSTRUCTION", color = MaterialTheme.colorScheme.onBackground)
-        VerticalSpacer(Dimens.extraLarge)
-        TemporaryDisclaimer()
-        Footer()
+        ContentColumn(modifier = Modifier.fillMaxSize().padding(horizontal = Dimens.small)) {
+            PersonalContent()
+            SectionHeader(stringResource(Res.string.things_i_have_worked_on))
+            VerticalSpacer(Dimens.large)
+            Text(
+                text = "SECTION UNDER CONSTRUCTION",
+                color = MaterialTheme.colorScheme.onBackground
+            )
+            VerticalSpacer(Dimens.extraLarge)
+            TemporaryDisclaimer(modifier = Modifier.align(Alignment.CenterHorizontally))
+            Footer(modifier = Modifier.align(Alignment.CenterHorizontally))
+        }
     }
 }
 
 @Composable
-private fun SectionHeader(header: String) {
+fun SectionHeader(header: String, modifier: Modifier = Modifier) {
     Text(
-        modifier = Modifier.padding(horizontal = Dimens.medium),
+        modifier = modifier,
         text = header,
         style = MaterialTheme.typography.headlineMedium,
         color = MaterialTheme.colorScheme.onBackground,
@@ -55,9 +62,9 @@ private fun SectionHeader(header: String) {
 }
 
 @Composable
-private fun TemporaryDisclaimer() {
+private fun TemporaryDisclaimer(modifier: Modifier = Modifier) {
     Text(
-        modifier = Modifier.sizeIn(maxWidth = 400.dp),
+        modifier = modifier.sizeIn(maxWidth = 400.dp),
         text = "Disclaimer: This page is currently under construction and a playground to learn how Kotlin " +
                 "Multiplatform Wasm works. If you want to help make it prettier or give some design ideas, feel free " +
                 "to contribute or start a discussion with the GitHub link at the bottom of the page.",
@@ -65,4 +72,12 @@ private fun TemporaryDisclaimer() {
         style = MaterialTheme.typography.bodySmall,
         textAlign = TextAlign.Center,
     )
+}
+
+@Previews
+@Composable
+fun StartScreenPreview(){
+    AppTheme {
+        StartScreen()
+    }
 }

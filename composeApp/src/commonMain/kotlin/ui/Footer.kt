@@ -8,6 +8,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import getPlatform
 import jasontoms.composeapp.generated.resources.Res
@@ -17,14 +18,14 @@ import jasontoms.composeapp.generated.resources.see_on_github
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import theme.Dimens
-import utils.HorizontalSpacer
-import utils.VerticalSpacer
+import theme.components.HorizontalSpacer
+import theme.components.VerticalSpacer
 
 @Composable
-fun Footer() {
+fun Footer(modifier: Modifier = Modifier) {
     val uriHandler = LocalUriHandler.current
     val platform = remember { getPlatform() }
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         VerticalSpacer(Dimens.large)
         Text(
             text = stringResource(Res.string.footer, platform.name),
@@ -38,7 +39,10 @@ fun Footer() {
                 tint = MaterialTheme.colorScheme.onBackground
             )
             HorizontalSpacer(Dimens.xxSmall)
-            Text(text = stringResource(Res.string.see_on_github), color = MaterialTheme.colorScheme.onBackground)
+            Text(
+                text = stringResource(Res.string.see_on_github),
+                color = MaterialTheme.colorScheme.onBackground
+            )
         }
     }
 }

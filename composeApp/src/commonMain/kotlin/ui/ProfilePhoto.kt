@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.derpdroid
@@ -24,8 +25,10 @@ import jasontoms.composeapp.generated.resources.ic_linkedin
 import org.jetbrains.compose.resources.painterResource
 import theme.Dimens
 import theme.components.FlippableCard
+import theme.components.VerticalSpacer
 import utils.ImageUrls
-import utils.VerticalSpacer
+
+val profileImageSize = 200.dp
 
 @Composable
 fun ProfilePhoto(modifier: Modifier = Modifier) {

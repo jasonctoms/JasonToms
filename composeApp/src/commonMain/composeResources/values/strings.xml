@@ -2,7 +2,7 @@
     <string name="footer">Written with Compose Multiplatform for %1$s!</string>
     <string name="see_on_github">Check it out on GitHub</string>
     <string name="bio">I am an Android developer and Engineering Manager at Stø (BankID BankAxept). I have been making Android apps for %1$s years, and have been an engineer for %2$s. I like my cats, tv shows, single player story-driven games, and avoiding conversations about hobbies so people don't think I am boring.</string>
-    <string name="important_things">Important things</string>
-    <string name="important_things_description">The top of the page is reserved for the things that matter most: my partner, Stella, and my cats, Storm, Lupin, Grey Thing, and Broomhilda.</string>
+    <string name="important_things">Personal info</string>
+    <string name="important_things_description">I can't have a personal website without showing off the things that matter most: my partner, Stella, and my cats, Storm, Lupin, Grey Thing, and Broomhilda.</string>
     <string name="things_i_have_worked_on">Things I have worked on</string>
 </resources>
