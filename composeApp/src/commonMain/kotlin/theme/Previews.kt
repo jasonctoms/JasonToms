@@ -1,6 +1,15 @@
 package theme
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import theme.components.ContentColumn
 
 private object PreviewDimens {
     // Phone-like sizes
@@ -33,3 +42,19 @@ private object PreviewDimens {
     heightDp = PreviewDimens.DESKTOP_WIDE_HEIGHT
 )
 annotation class Previews
+
+@Composable
+fun ContentPreview(content: @Composable () -> Unit) {
+    AppTheme {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = MaterialTheme.colorScheme.background)
+                .verticalScroll(rememberScrollState())
+        ) {
+            ContentColumn(modifier = Modifier.fillMaxSize()) {
+                content()
+            }
+        }
+    }
+}

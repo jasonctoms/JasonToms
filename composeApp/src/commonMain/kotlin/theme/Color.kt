@@ -3,6 +3,9 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
+val lsuPurple = Color(0xFF461D7C)
+val lsuGold = Color(0xFFFDD023)
+
 val primaryLight = Color(0xFF38608F)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0xFFD2E4FF)

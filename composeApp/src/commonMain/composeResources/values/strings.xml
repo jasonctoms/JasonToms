@@ -7,4 +7,9 @@
     <string name="projects_title">Things I made</string>
     <string name="work_title">Things I have worked on</string>
     <string name="school_title">Things they taught me</string>
+    <string name="school_name">Louisiana State University</string>
+    <string name="school_location">Baton Rouge, Louisiana, USA</string>
+    <string name="school_degree">Bachelor of Science in Electrical Engineering</string>
+    <string name="school_years">August 2009 - May 2013</string>
+    <string name="school_description">When I was starting college, I was very close to going in to chemical engineering, because I loved chemistry. But the advisor told me being color blind could cause problems, so I took my interest in electronics and computers and went into electrical engineering instead. I spend my college years taking classes like circuits, microprocessors, optical electronics, control systems, and microfluidic biochips. I also took two semesters of C++, which made me promise to never be a software developer. It wasn’t until years later that I learned I didn’t hate programming, I just hated C++.\n\nOutside of class I worked the electrical engineering department’s help desk and spent some time as a network infrastructure technical for the university. I also was active in the LSU chapter of IEEE, eventually serving as President of the chapter during my senior year.</string>
 </resources>
