@@ -15,7 +15,7 @@ fun ContentColumn(modifier: Modifier = Modifier, content: @Composable ColumnScop
         modifier = Modifier
             .sizeIn(maxWidth = 1200.dp)
             .padding(horizontal = Dimens.small)
-            .then(modifier)
+            .then(modifier),
     ) {
         content()
     }

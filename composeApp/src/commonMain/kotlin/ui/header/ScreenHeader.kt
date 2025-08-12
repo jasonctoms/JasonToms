@@ -31,56 +31,57 @@ import utils.ImageUrls
 
 @Composable
 fun ScreenHeader(modifier: Modifier = Modifier) {
-    val widthClass = LocalWindowSizeClass.current?.widthSizeClass
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(IntrinsicSize.Min)
-    ) {
-        AsyncImage(
-            modifier = Modifier
-                .fillMaxSize()
-                .sizeIn(maxHeight = 500.dp),
-            model = ImageUrls.SOGNEFJORD.url,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
+    LocalWindowSizeClass.current?.widthSizeClass?.let { widthClass ->
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.7f),
-                        ),
-                        startY = 300f
-                    )
-                )
-        )
-        ContentColumn(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(vertical = Dimens.medium)
+            modifier = modifier
+                .fillMaxWidth()
+                .height(IntrinsicSize.Min)
         ) {
-            if (widthClass == WindowWidthSizeClass.Compact) {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(Dimens.small),
-                ) {
-                    ProfilePhoto()
-                    BiographyText()
-                }
-            } else {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.Bottom,
-                    horizontalArrangement = Arrangement.Center,
-                ) {
-                    ProfilePhoto()
-                    HorizontalSpacer(Dimens.medium)
-                    BiographyText()
+            AsyncImage(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .sizeIn(maxHeight = 500.dp),
+                model = ImageUrls.SOGNEFJORD.url,
+                contentDescription = null,
+                contentScale = ContentScale.Crop
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                MaterialTheme.colorScheme.background.copy(alpha = 0.7f),
+                            ),
+                            startY = 300f
+                        )
+                    )
+            )
+            ContentColumn(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(vertical = Dimens.medium)
+            ) {
+                if (widthClass == WindowWidthSizeClass.Compact) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(Dimens.small),
+                    ) {
+                        ProfilePhoto()
+                        BiographyText()
+                    }
+                } else {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                    ) {
+                        ProfilePhoto()
+                        HorizontalSpacer(Dimens.medium)
+                        BiographyText()
+                    }
                 }
             }
         }

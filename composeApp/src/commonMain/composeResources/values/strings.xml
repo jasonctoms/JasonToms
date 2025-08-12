@@ -1,7 +1,8 @@
 <resources>
     <string name="footer">Written with Compose Multiplatform for %1$s!</string>
     <string name="see_on_github">Check it out on GitHub</string>
-    <string name="bio">I am an Android developer and Engineering Manager at Stø (BankID BankAxept). I have been making Android apps for %1$s years, and have been an engineer for %2$s. I like my cats, tv shows, single player story-driven games, and avoiding conversations about hobbies so people don't think I am boring. I dislike billionaires, inequality, and hateful people. I also dislike people who do not release the Epstein files.</string>
+    <string name="bio">I am an Android developer and Engineering Manager at Stø (BankID BankAxept). I have been making mobile apps for %1$s years, and have been an engineer for %2$s. I like my cats, tv shows, single player story-driven games, and avoiding conversations about hobbies so people don't think I am boring. I dislike billionaires, inequality, and hateful people. I also dislike people who do not release the Epstein files.</string>
+    <string name="website">Website</string>
     <string name="personal_title">Personal info</string>
     <string name="personal_message">I can't have a personal website without showing off the things that matter most: my partner, Stella, and my cats, Storm, Lupin, Grey Thing, and Broomhilda.</string>
     <string name="projects_title">Things I made</string>
@@ -12,4 +13,6 @@
     <string name="school_degree">Bachelor of Science in Electrical Engineering</string>
     <string name="school_years">August 2009 - May 2013</string>
     <string name="school_description">When I was starting college, I was very close to going in to chemical engineering, because I loved chemistry. But the advisor told me being color blind could cause problems, so I took my interest in electronics and computers and went into electrical engineering instead. I spend my college years taking classes like circuits, microprocessors, optical electronics, control systems, and microfluidic biochips. I also took two semesters of C++, which made me promise to never be a software developer. It wasn’t until years later that I learned I didn’t hate programming, I just hated C++.\n\nOutside of class I worked the electrical engineering department’s help desk and spent some time as a network infrastructure technical for the university. I also was active in the LSU chapter of IEEE, eventually serving as President of the chapter during my senior year.</string>
+    <string name="project_1_title">PICKY</string>
+    <string name="project_1_description">A collaborative effort between myself and tattoo artist Gunnar V, PICKY aims to help tattoo artists focus on their art by making all of the other stuff a lot easier.\n\nThe app handles things like client and ink management, helps pick which inks you should use to tattoo an image and helps mix inks to make other colors. It also has a handful of built-in algorithms to make stencils specifically for tattooing, letting you print these stencils directly from the app.</string>
 </resources>

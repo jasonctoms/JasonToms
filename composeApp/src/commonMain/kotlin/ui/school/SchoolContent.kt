@@ -2,15 +2,11 @@ package ui.school
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -28,43 +24,26 @@ import jasontoms.composeapp.generated.resources.school_years
 import org.jetbrains.compose.resources.stringResource
 import theme.ContentPreview
 import theme.Dimens
-import theme.LocalWindowSizeClass
 import theme.Previews
 import theme.components.AdaptiveFlowRow
 import theme.components.ItemsPerRow
 import theme.lsuGold
 import theme.lsuPurple
+import ui.ContentCard
 import ui.Section
 import ui.WebsiteSection
-import ui.containerCard
 import utils.ImageUrls
 
 @Composable
 fun SchoolContent() {
     Section(section = WebsiteSection.SCHOOL) {
-        LocalWindowSizeClass.current?.widthSizeClass?.let { widthClass ->
-            val containerModifier = Modifier
-                .fillMaxWidth()
-                .containerCard(
-                    backgroundColor = lsuPurple,
-                    borderColor = lsuGold,
-                )
-            if (widthClass == WindowWidthSizeClass.Expanded) {
-                Row(
-                    modifier = containerModifier,
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(Dimens.small)
-                ) {
-                    SchoolDescription(modifier = Modifier.weight(3f))
-                    SchoolPictures(modifier = Modifier.weight(2f))
-                }
-            } else {
-                Column(modifier = containerModifier) {
-                    SchoolDescription()
-                    SchoolPictures()
-                }
-            }
-        }
+        ContentCard(
+            backgroundColor = lsuPurple,
+            borderColor = lsuGold,
+            fullWidth = true,
+            image = { SchoolPictures() },
+            details = { SchoolDescription() }
+        )
     }
 }
 

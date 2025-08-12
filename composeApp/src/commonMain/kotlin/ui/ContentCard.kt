@@ -1,18 +1,98 @@
 package ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import jasontoms.composeapp.generated.resources.Res
+import jasontoms.composeapp.generated.resources.derpdroid
+import jasontoms.composeapp.generated.resources.picky_background
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+import theme.ContentPreview
 import theme.Dimens
+import theme.LocalWindowSizeClass
+import theme.Previews
+import theme.components.VerticalSpacer
+import theme.lsuGold
+import theme.lsuPurple
+import ui.projects.TextWithBackground
 
 @Composable
-fun ContentCard(modifier: Modifier = Modifier) {
-
+fun ContentCard(
+    backgroundColor: Color,
+    borderColor: Color,
+    image: @Composable () -> Unit,
+    details: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+    fullWidth: Boolean = false,
+    backgroundImage: DrawableResource? = null,
+) {
+    LocalWindowSizeClass.current?.widthSizeClass?.let { widthClass ->
+        val cardWidth = when {
+            fullWidth -> 1f
+            widthClass == WindowWidthSizeClass.Compact -> 1f
+            widthClass == WindowWidthSizeClass.Medium -> 0.85f
+            widthClass == WindowWidthSizeClass.Expanded -> 0.7f
+            else -> 1f
+        }
+        Box(
+            modifier = modifier
+                .fillMaxWidth(cardWidth)
+                .containerCard(backgroundColor, borderColor)
+        ) {
+            backgroundImage?.let {
+                Image(
+                    modifier = Modifier
+                        .matchParentSize()
+                        .clip(MaterialTheme.shapes.extraLarge),
+                    painter = painterResource(it),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                )
+            }
+            if (widthClass == WindowWidthSizeClass.Expanded) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(Dimens.large),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(Dimens.small)
+                ) {
+                    Box(modifier = Modifier.weight(3f)) { details() }
+                    Box(modifier = Modifier.weight(2f)) { image() }
+                }
+            } else {
+                Column(
+                    modifier = Modifier.fillMaxWidth().padding(Dimens.large),
+                    verticalArrangement = Arrangement.spacedBy(Dimens.small),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    if (fullWidth) {
+                        details()
+                        image()
+                    } else {
+                        image()
+                        details()
+                    }
+                }
+            }
+        }
+    }
 }
 
 @Composable
@@ -29,4 +109,88 @@ fun Modifier.containerCard(
         color = borderColor,
         shape = MaterialTheme.shapes.extraLarge
     )
-    .padding(Dimens.large)
+
+@Composable
+@Previews
+private fun ContentCardPreview() {
+    ContentPreview {
+        ContentCard(
+            backgroundColor = Color.Unspecified,
+            borderColor = Color.Black,
+            image = { ContentCardImage() },
+            details = { ContentCardDetails(true) },
+            backgroundImage = Res.drawable.picky_background,
+        )
+        VerticalSpacer(Dimens.small)
+        ContentCard(
+            backgroundColor = lsuPurple,
+            borderColor = lsuGold,
+            fullWidth = true,
+            image = { ContentCardImage() },
+            details = { ContentCardDetails() }
+        )
+    }
+}
+
+@Composable
+private fun ContentCardDetails(backgroundImage: Boolean = false) {
+    Column(verticalArrangement = Arrangement.spacedBy(Dimens.xSmall)) {
+        if (backgroundImage) {
+            TextWithBackground(
+                text = "Content",
+                style = MaterialTheme.typography.headlineMedium
+            )
+            TextWithBackground(
+                text = "Content",
+                style = MaterialTheme.typography.labelLarge
+            )
+            TextWithBackground(
+                text = "Content",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            TextWithBackground(
+                text = "Content",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            TextWithBackground(
+                text = "Content",
+                style = MaterialTheme.typography.bodyMedium
+            )
+        } else {
+            Text(
+                text = "Content",
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Text(
+                text = "Content",
+                style = MaterialTheme.typography.labelLarge
+            )
+            Text(
+                text = "Content",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Text(
+                text = "Content",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Text(
+                text = "Content",
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
+    }
+}
+
+@Composable
+private fun ContentCardImage() {
+    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+        Image(
+            modifier = Modifier
+                .fillMaxWidth(0.6f)
+                .aspectRatio(1f)
+                .clip(MaterialTheme.shapes.medium),
+            painter = painterResource(Res.drawable.derpdroid),
+            contentDescription = null,
+        )
+    }
+}
