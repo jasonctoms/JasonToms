@@ -32,7 +32,7 @@ import theme.lsuPurple
 import ui.ContentCard
 import ui.Section
 import ui.WebsiteSection
-import utils.ImageUrls
+import utils.CdnImage
 
 @Composable
 fun SchoolContent() {
@@ -92,17 +92,17 @@ private fun SchoolPictures(modifier: Modifier = Modifier) {
         Pictures(
             itemWidth = itemWidth,
             pictures = listOf(
-                ImageUrls.ME_AT_LSU,
-                ImageUrls.BREADBOARD,
-                ImageUrls.OSCILLISCOPE,
-                ImageUrls.MICROMIXER
+                CdnImage.ME_AT_LSU,
+                CdnImage.BREADBOARD,
+                CdnImage.OSCILLISCOPE,
+                CdnImage.MICROMIXER
             )
         )
     }
 }
 
 @Composable
-private fun Pictures(itemWidth: Dp, pictures: List<ImageUrls>) {
+private fun Pictures(itemWidth: Dp, pictures: List<CdnImage>) {
     pictures.forEach {
         AsyncImage(
             modifier = Modifier

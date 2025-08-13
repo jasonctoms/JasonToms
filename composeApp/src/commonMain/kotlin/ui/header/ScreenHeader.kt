@@ -27,7 +27,7 @@ import theme.LocalWindowSizeClass
 import theme.Previews
 import theme.components.ContentColumn
 import theme.components.HorizontalSpacer
-import utils.ImageUrls
+import utils.CdnImage
 
 @Composable
 fun ScreenHeader(modifier: Modifier = Modifier) {
@@ -41,7 +41,7 @@ fun ScreenHeader(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxSize()
                     .sizeIn(maxHeight = 500.dp),
-                model = ImageUrls.SOGNEFJORD.url,
+                model = CdnImage.SOGNEFJORD.url,
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )

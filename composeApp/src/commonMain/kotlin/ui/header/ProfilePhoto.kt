@@ -27,7 +27,7 @@ import org.jetbrains.compose.resources.painterResource
 import theme.Dimens
 import theme.components.FlippableCard
 import theme.components.VerticalSpacer
-import utils.ImageUrls
+import utils.CdnImage
 
 val profileImageSize = 200.dp
 
@@ -50,7 +50,7 @@ private fun ProfilePhotoCardFront() {
             modifier = Modifier
                 .size(profileImageSize)
                 .clip(CircleShape),
-            model = ImageUrls.PROFILE.url,
+            model = CdnImage.PROFILE.url,
             contentDescription = null,
         )
         VerticalSpacer(Dimens.small)
