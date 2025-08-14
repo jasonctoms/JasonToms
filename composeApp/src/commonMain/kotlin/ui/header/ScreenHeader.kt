@@ -54,7 +54,7 @@ fun ScreenHeader(modifier: Modifier = Modifier) {
                                 Color.Transparent,
                                 MaterialTheme.colorScheme.background.copy(alpha = 0.7f),
                             ),
-                            startY = 300f
+                            startY = 100f
                         )
                     )
             )

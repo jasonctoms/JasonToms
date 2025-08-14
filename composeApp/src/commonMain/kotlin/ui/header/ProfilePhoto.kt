@@ -10,7 +10,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +25,7 @@ import jasontoms.composeapp.generated.resources.ic_sessionize
 import org.jetbrains.compose.resources.painterResource
 import theme.Dimens
 import theme.components.FlippableCard
+import theme.components.SelectableText
 import theme.components.VerticalSpacer
 import utils.CdnImage
 
@@ -54,7 +54,7 @@ private fun ProfilePhotoCardFront() {
             contentDescription = null,
         )
         VerticalSpacer(Dimens.small)
-        Text(text = "Jason Toms", style = MaterialTheme.typography.headlineMedium)
+        SelectableText(text = "Jason Toms", style = MaterialTheme.typography.headlineMedium)
         SocialLinks()
     }
 }

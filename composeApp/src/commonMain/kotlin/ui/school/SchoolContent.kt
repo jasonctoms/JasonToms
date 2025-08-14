@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,6 +26,7 @@ import theme.Dimens
 import theme.Previews
 import theme.components.AdaptiveFlowRow
 import theme.components.ItemsPerRow
+import theme.components.SelectableText
 import theme.lsuGold
 import theme.lsuPurple
 import ui.ContentCard
@@ -53,29 +53,29 @@ private fun SchoolDescription(modifier: Modifier = Modifier) {
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(Dimens.xSmall)
     ) {
-        Text(
+        SelectableText(
             text = stringResource(Res.string.school_name),
             color = Color.White,
             style = MaterialTheme.typography.displaySmall
         )
-        Text(
+        SelectableText(
             text = stringResource(Res.string.school_location),
             color = Color.White,
             style = MaterialTheme.typography.headlineSmall,
             fontStyle = FontStyle.Italic,
         )
-        Text(
+        SelectableText(
             text = stringResource(Res.string.school_degree),
             color = Color.White,
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
         )
-        Text(
+        SelectableText(
             text = stringResource(Res.string.school_years),
             color = Color.White,
             style = MaterialTheme.typography.headlineSmall
         )
-        Text(
+        SelectableText(
             text = stringResource(Res.string.school_description),
             color = Color.White,
             style = MaterialTheme.typography.bodyMedium

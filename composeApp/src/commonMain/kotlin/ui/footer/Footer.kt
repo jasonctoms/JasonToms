@@ -3,7 +3,6 @@ package ui.footer
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -19,6 +18,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import theme.Dimens
 import theme.components.HorizontalSpacer
+import theme.components.SelectableText
 import theme.components.VerticalSpacer
 
 @Composable
@@ -29,7 +29,7 @@ fun Footer(modifier: Modifier = Modifier) {
         VerticalSpacer(Dimens.extraLarge)
         TemporaryDisclaimer()
         VerticalSpacer(Dimens.large)
-        Text(
+        SelectableText(
             text = stringResource(Res.string.footer, platform.name),
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.labelSmall
@@ -41,7 +41,7 @@ fun Footer(modifier: Modifier = Modifier) {
                 tint = MaterialTheme.colorScheme.onBackground
             )
             HorizontalSpacer(Dimens.xxSmall)
-            Text(
+            SelectableText(
                 text = stringResource(Res.string.see_on_github),
                 color = MaterialTheme.colorScheme.onBackground
             )

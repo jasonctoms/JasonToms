@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,6 +25,7 @@ import theme.LocalWindowSizeClass
 import theme.Previews
 import theme.components.AdaptiveFlowRow
 import theme.components.ItemsPerRow
+import theme.components.SelectableText
 import theme.components.VerticalSpacer
 import ui.Section
 import ui.WebsiteSection
@@ -36,7 +36,7 @@ import utils.CdnImage
 fun PersonalContent(modifier: Modifier = Modifier) {
     LocalWindowSizeClass.current?.widthSizeClass?.let { widthClass ->
         Section(section = WebsiteSection.PERSONAL, modifier = modifier) {
-            Text(
+            SelectableText(
                 text = stringResource(Res.string.personal_message),
                 color = MaterialTheme.colorScheme.onBackground
             )
@@ -68,7 +68,7 @@ fun PersonalContent(modifier: Modifier = Modifier) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(Dimens.small)
                 ) {
-                    Text(
+                    SelectableText(
                         text = stringResource(Res.string.personal_soapbox),
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         style = MaterialTheme.typography.bodySmall
@@ -89,7 +89,7 @@ fun PersonalContent(modifier: Modifier = Modifier) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     SoapboxImage(image = CdnImage.UNITY_SIGN, modifier = Modifier.weight(1f))
-                    Text(
+                    SelectableText(
                         modifier = Modifier.weight(3f),
                         text = stringResource(Res.string.personal_soapbox),
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -105,7 +105,7 @@ fun PersonalContent(modifier: Modifier = Modifier) {
 @Composable
 private fun SoapboxImage(image: CdnImage, modifier: Modifier = Modifier) {
     AsyncImage(
-        modifier = modifier.clip(MaterialTheme.shapes.medium),
+        modifier = modifier.fillMaxWidth().clip(MaterialTheme.shapes.medium),
         model = image.url,
         contentDescription = null,
     )

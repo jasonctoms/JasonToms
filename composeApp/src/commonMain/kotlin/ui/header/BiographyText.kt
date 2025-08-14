@@ -2,7 +2,6 @@ package ui.header
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -14,6 +13,7 @@ import kotlinx.datetime.minus
 import kotlinx.datetime.todayIn
 import org.jetbrains.compose.resources.stringResource
 import theme.Dimens
+import theme.components.SelectableText
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
@@ -32,7 +32,7 @@ fun BiographyText(modifier: Modifier = Modifier) {
         (today - firstAndroidJob).years
     }
 
-    Text(
+    SelectableText(
         modifier = modifier.padding(Dimens.medium),
         text = stringResource(Res.string.bio, yearsAsAndroidDeveloper, yearsAsEngineer),
         style = MaterialTheme.typography.bodyMedium,
