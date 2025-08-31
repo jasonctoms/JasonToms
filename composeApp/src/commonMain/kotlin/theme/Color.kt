@@ -5,6 +5,8 @@ import androidx.compose.ui.graphics.Color
 
 val lsuPurple = Color(0xFF461D7C)
 val lsuGold = Color(0xFFFDD023)
+val dockerBlue = Color(0xFF1D63ED)
+val linuxMintGreen = Color(0xFF92B662)
 
 val primaryLight = Color(0xFF38608F)
 val onPrimaryLight = Color(0xFFFFFFFF)

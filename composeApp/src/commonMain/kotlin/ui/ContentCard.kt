@@ -49,7 +49,7 @@ fun ContentCard(
             fullWidth -> 1f
             widthClass == WindowWidthSizeClass.Compact -> 1f
             widthClass == WindowWidthSizeClass.Medium -> 0.85f
-            widthClass == WindowWidthSizeClass.Expanded -> 0.7f
+            widthClass == WindowWidthSizeClass.Expanded -> 0.8f
             else -> 1f
         }
         Box(

@@ -11,6 +11,10 @@ enum class CdnImage(val url: String) {
     UNITY_SIGN("https://res.cloudinary.com/dclcigdkv/image/upload/v1755088225/unity-sign_l6r5fz.jpg"),
     HUMAN_CENSUS("https://res.cloudinary.com/dclcigdkv/image/upload/v1755088225/human-census_vnjmya.jpg"),
 
+    PICKY_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1755176730/picky_icon_fzqurp.png"),
+    DOCKER_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1756634333/docker_xxu6nq.png"),
+    LINUX_MINT_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1756633356/linux_mint_sqgvs2.png"),
+
     ME_AT_LSU("https://res.cloudinary.com/dclcigdkv/image/upload/v1754929334/me-at-lsu_b8t1my.png"),
     MICROMIXER("https://res.cloudinary.com/dclcigdkv/image/upload/v1754929336/micromixer_tikyk8.jpg"),
     OSCILLISCOPE("https://res.cloudinary.com/dclcigdkv/image/upload/v1754929334/oscilliscope_l4d4wr.jpg"),
