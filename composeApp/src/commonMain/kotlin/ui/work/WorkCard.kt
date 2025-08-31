@@ -16,7 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -55,10 +57,45 @@ fun ColumnScope.WorkCard(
     modifier: Modifier = Modifier,
     secondaryImage: CdnImage? = null,
 ) {
+    WorkCard(
+        modifier = modifier,
+        title = title,
+        location = location,
+        years = years,
+        aiDescription = aiDescription,
+        myPart = myPart,
+        logo = logo,
+        websiteUrl = websiteUrl,
+        appForStoreLink = appForStoreLink,
+        placement = placement,
+        backgroundColor = backgroundColor,
+        borderBrush = SolidColor(borderColor),
+        textColor = textColor,
+        secondaryImage = secondaryImage,
+    )
+}
+
+@Composable
+fun ColumnScope.WorkCard(
+    title: String,
+    location: String,
+    years: String,
+    aiDescription: String,
+    myPart: String,
+    logo: CdnImage,
+    websiteUrl: String,
+    appForStoreLink: AppForStoreLink?,
+    placement: ContentCardPlacement,
+    backgroundColor: Color,
+    borderBrush: Brush,
+    textColor: Color,
+    modifier: Modifier = Modifier,
+    secondaryImage: CdnImage? = null,
+) {
     ContentCard(
         modifier = modifier,
         backgroundColor = backgroundColor,
-        borderColor = borderColor,
+        borderBrush = borderBrush,
         image = { WorkCardImages(logo, secondaryImage) },
         details = {
             Column(modifier = Modifier.fillMaxWidth()) {

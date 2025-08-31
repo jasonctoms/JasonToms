@@ -18,7 +18,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import jasontoms.composeapp.generated.resources.Res
@@ -44,6 +46,27 @@ fun ColumnScope.ContentCard(
     placement: ContentCardPlacement = ContentCardPlacement.START,
     backgroundImage: DrawableResource? = null,
 ) {
+    ContentCard(
+        backgroundColor = backgroundColor,
+        borderBrush = SolidColor(borderColor),
+        image = image,
+        details = details,
+        modifier = modifier,
+        placement = placement,
+        backgroundImage = backgroundImage,
+    )
+}
+
+@Composable
+fun ColumnScope.ContentCard(
+    backgroundColor: Color,
+    borderBrush: Brush,
+    image: @Composable () -> Unit,
+    details: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+    placement: ContentCardPlacement = ContentCardPlacement.START,
+    backgroundImage: DrawableResource? = null,
+) {
     val widthClass = LocalWindowSizeClass.current.widthSizeClass
     val cardWidth = when {
         placement == ContentCardPlacement.FULL_WIDTH -> 1f
@@ -62,7 +85,7 @@ fun ColumnScope.ContentCard(
                 }
             )
             .fillMaxWidth(cardWidth)
-            .containerCard(backgroundColor, borderColor)
+            .containerCard(backgroundColor, borderBrush)
     ) {
         backgroundImage?.let {
             Image(
@@ -112,6 +135,12 @@ fun ColumnScope.ContentCard(
 fun Modifier.containerCard(
     backgroundColor: Color,
     borderColor: Color
+): Modifier = this.containerCard(backgroundColor, SolidColor(borderColor))
+
+@Composable
+fun Modifier.containerCard(
+    backgroundColor: Color,
+    borderBrush: Brush
 ): Modifier = this
     .background(
         color = backgroundColor.copy(alpha = 0.9f),
@@ -119,7 +148,7 @@ fun Modifier.containerCard(
     )
     .border(
         width = 10.dp,
-        color = borderColor,
+        brush = borderBrush,
         shape = MaterialTheme.shapes.extraLarge
     )
 

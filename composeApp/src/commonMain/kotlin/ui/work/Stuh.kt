@@ -3,6 +3,7 @@ package ui.work
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.work_5_description
 import jasontoms.composeapp.generated.resources.work_5_location
@@ -10,9 +11,12 @@ import jasontoms.composeapp.generated.resources.work_5_tasks
 import jasontoms.composeapp.generated.resources.work_5_title
 import jasontoms.composeapp.generated.resources.work_5_years
 import org.jetbrains.compose.resources.stringResource
+import theme.ContentPreview
+import theme.Previews
 import theme.components.AppForStoreLink
 import theme.stuhBackground
 import theme.stuhGreen
+import theme.stuhPurple
 import theme.stuhText
 import ui.ContentCardPlacement
 import utils.CdnImage
@@ -32,7 +36,15 @@ fun ColumnScope.Stuh(placement: ContentCardPlacement, modifier: Modifier = Modif
         appForStoreLink = AppForStoreLink.BANKID,
         placement = placement,
         backgroundColor = stuhBackground,
-        borderColor = stuhGreen,
+        borderBrush = Brush.sweepGradient(colors = listOf(stuhPurple, stuhGreen, stuhPurple)),
         textColor = stuhText,
     )
+}
+
+@Previews
+@Composable
+private fun StuhCardPreview() {
+    ContentPreview {
+        Stuh(placement = ContentCardPlacement.START)
+    }
 }
