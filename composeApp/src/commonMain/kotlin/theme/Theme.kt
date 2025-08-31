@@ -24,10 +24,12 @@ fun AppTheme(content: @Composable () -> Unit) {
     val windowSizeClass = remember(windowInfo.containerSize, density) {
         getWindowSizeClass(containerSize = windowInfo.containerSize, density = density)
     }
-    CompositionLocalProvider(LocalWindowSizeClass provides windowSizeClass) {
-        MaterialTheme(colorScheme = if (isSystemInDarkTheme()) darkScheme else lightScheme) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                content()
+    if (windowSizeClass != null) {
+        CompositionLocalProvider(LocalWindowSizeClass provides windowSizeClass) {
+            MaterialTheme(colorScheme = if (isSystemInDarkTheme()) darkScheme else lightScheme) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    content()
+                }
             }
         }
     }
@@ -50,6 +52,6 @@ private fun getWindowSizeClass(containerSize: IntSize, density: Density): Window
 }
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-val LocalWindowSizeClass = compositionLocalOf<WindowSizeClass?> {
+val LocalWindowSizeClass = compositionLocalOf<WindowSizeClass> {
     error("LocalWindowSizeClass not initialized")
 }

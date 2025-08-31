@@ -15,6 +15,14 @@ enum class CdnImage(val url: String) {
     DOCKER_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1756634333/docker_xxu6nq.png"),
     LINUX_MINT_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1756633356/linux_mint_sqgvs2.png"),
 
+    STUH_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756649446/St%C3%B8_logo_RGB_vcla37.png"),
+    BANKID_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756651021/bankid-logo_h69qnp.png"),
+    VIPPS_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756650781/vipps_vyqjmx.png"),
+    NRK_TV_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756650477/nrktv_efmqoi.png"),
+    HOLTE_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756650369/holteportalen_mozhgn.png"),
+    KONGSBERG_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756649685/kongsberg_logo_hiqumv.png"),
+    KMASTER("https://res.cloudinary.com/dclcigdkv/image/upload/v1756649596/kmaster_zv03ez.webp"),
+
     ME_AT_LSU("https://res.cloudinary.com/dclcigdkv/image/upload/v1754929334/me-at-lsu_b8t1my.png"),
     MICROMIXER("https://res.cloudinary.com/dclcigdkv/image/upload/v1754929336/micromixer_tikyk8.jpg"),
     OSCILLISCOPE("https://res.cloudinary.com/dclcigdkv/image/upload/v1754929334/oscilliscope_l4d4wr.jpg"),

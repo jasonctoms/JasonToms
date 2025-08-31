@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,66 +30,78 @@ import theme.ContentPreview
 import theme.Dimens
 import theme.LocalWindowSizeClass
 import theme.Previews
-import theme.components.VerticalSpacer
 import theme.lsuGold
 import theme.lsuPurple
 import ui.projects.TextWithBackground
 
 @Composable
-fun ContentCard(
+fun ColumnScope.ContentCard(
     backgroundColor: Color,
     borderColor: Color,
     image: @Composable () -> Unit,
     details: @Composable () -> Unit,
     modifier: Modifier = Modifier,
-    fullWidth: Boolean = false,
+    placement: ContentCardPlacement = ContentCardPlacement.START,
     backgroundImage: DrawableResource? = null,
 ) {
-    LocalWindowSizeClass.current?.widthSizeClass?.let { widthClass ->
-        val cardWidth = when {
-            fullWidth -> 1f
-            widthClass == WindowWidthSizeClass.Compact -> 1f
-            widthClass == WindowWidthSizeClass.Medium -> 0.85f
-            widthClass == WindowWidthSizeClass.Expanded -> 0.8f
-            else -> 1f
+    val widthClass = LocalWindowSizeClass.current.widthSizeClass
+    val cardWidth = when {
+        placement == ContentCardPlacement.FULL_WIDTH -> 1f
+        widthClass == WindowWidthSizeClass.Compact -> 1f
+        widthClass == WindowWidthSizeClass.Medium -> 0.85f
+        widthClass == WindowWidthSizeClass.Expanded -> 0.8f
+        else -> 1f
+    }
+    Box(
+        modifier = modifier
+            .align(
+                if (placement == ContentCardPlacement.END) {
+                    Alignment.End
+                } else {
+                    Alignment.Start
+                }
+            )
+            .fillMaxWidth(cardWidth)
+            .containerCard(backgroundColor, borderColor)
+    ) {
+        backgroundImage?.let {
+            Image(
+                modifier = Modifier
+                    .matchParentSize()
+                    .clip(MaterialTheme.shapes.extraLarge),
+                painter = painterResource(it),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+            )
         }
-        Box(
-            modifier = modifier
-                .fillMaxWidth(cardWidth)
-                .containerCard(backgroundColor, borderColor)
-        ) {
-            backgroundImage?.let {
-                Image(
-                    modifier = Modifier
-                        .matchParentSize()
-                        .clip(MaterialTheme.shapes.extraLarge),
-                    painter = painterResource(it),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                )
-            }
-            if (widthClass == WindowWidthSizeClass.Expanded) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(Dimens.large),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(Dimens.small)
-                ) {
+        if (widthClass == WindowWidthSizeClass.Expanded) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(Dimens.large),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(Dimens.small)
+            ) {
+                if (placement == ContentCardPlacement.START) {
+                    Box(modifier = Modifier.weight(2f)) { image() }
+                    Box(modifier = Modifier.weight(3f)) { details() }
+                } else {
                     Box(modifier = Modifier.weight(3f)) { details() }
                     Box(modifier = Modifier.weight(2f)) { image() }
                 }
-            } else {
-                Column(
-                    modifier = Modifier.fillMaxWidth().padding(Dimens.large),
-                    verticalArrangement = Arrangement.spacedBy(Dimens.small),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    if (fullWidth) {
-                        details()
-                        image()
-                    } else {
-                        image()
-                        details()
-                    }
+            }
+        } else {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(Dimens.large),
+                verticalArrangement = Arrangement.spacedBy(Dimens.small),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                if (placement == ContentCardPlacement.FULL_WIDTH) {
+                    details()
+                    image()
+                } else {
+                    image()
+                    details()
                 }
             }
         }
@@ -110,6 +123,8 @@ fun Modifier.containerCard(
         shape = MaterialTheme.shapes.extraLarge
     )
 
+enum class ContentCardPlacement { START, END, FULL_WIDTH }
+
 @Composable
 @Previews
 private fun ContentCardPreview() {
@@ -121,11 +136,17 @@ private fun ContentCardPreview() {
             details = { ContentCardDetails(true) },
             backgroundImage = Res.drawable.picky_background,
         )
-        VerticalSpacer(Dimens.small)
         ContentCard(
             backgroundColor = lsuPurple,
             borderColor = lsuGold,
-            fullWidth = true,
+            placement = ContentCardPlacement.END,
+            image = { ContentCardImage() },
+            details = { ContentCardDetails() }
+        )
+        ContentCard(
+            backgroundColor = lsuPurple,
+            borderColor = lsuGold,
+            placement = ContentCardPlacement.FULL_WIDTH,
             image = { ContentCardImage() },
             details = { ContentCardDetails() }
         )

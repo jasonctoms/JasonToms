@@ -5,10 +5,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.stringResource
-import theme.Dimens
 import theme.components.ContentColumn
 import theme.components.SectionHeader
-import theme.components.VerticalSpacer
 
 @Composable
 fun Section(
@@ -18,7 +16,6 @@ fun Section(
 ) {
     ContentColumn(modifier = modifier.fillMaxSize()) {
         SectionHeader(header = stringResource(section.titleRes))
-        VerticalSpacer(Dimens.small)
         content()
     }
 }

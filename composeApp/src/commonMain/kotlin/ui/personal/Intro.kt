@@ -1,5 +1,6 @@
 package ui.personal
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,24 +23,26 @@ import utils.CdnImage
 
 @Composable
 fun Intro() {
-    SelectableText(
-        text = stringResource(Res.string.personal_message),
-        color = MaterialTheme.colorScheme.onBackground
-    )
-    VerticalSpacer(Dimens.small)
-    AdaptiveFlowRow(
-        modifier = Modifier.fillMaxWidth(),
-        itemsPerRow = ItemsPerRow(
-            compact = 2,
-            medium = 4,
-            expanded = 5,
+    Column {
+        SelectableText(
+            text = stringResource(Res.string.personal_message),
+            color = MaterialTheme.colorScheme.onBackground
         )
-    ) { itemWidth ->
-        PersonalImage(CdnImage.STELLA_JASON_ULRIKEN.url, itemWidth)
-        PersonalImage(CdnImage.STORM_IN_BOX.url, itemWidth)
-        PersonalImage(CdnImage.STORM_AND_LUPIN.url, itemWidth)
-        PersonalImage(CdnImage.GREY_THING_SOON.url, itemWidth)
-        PersonalImage(CdnImage.BROOMY_IN_CHAIR.url, itemWidth)
+        VerticalSpacer(Dimens.small)
+        AdaptiveFlowRow(
+            modifier = Modifier.fillMaxWidth(),
+            itemsPerRow = ItemsPerRow(
+                compact = 2,
+                medium = 4,
+                expanded = 5,
+            )
+        ) { itemWidth ->
+            PersonalImage(CdnImage.STELLA_JASON_ULRIKEN.url, itemWidth)
+            PersonalImage(CdnImage.STORM_IN_BOX.url, itemWidth)
+            PersonalImage(CdnImage.STORM_AND_LUPIN.url, itemWidth)
+            PersonalImage(CdnImage.GREY_THING_SOON.url, itemWidth)
+            PersonalImage(CdnImage.BROOMY_IN_CHAIR.url, itemWidth)
+        }
     }
 }
 

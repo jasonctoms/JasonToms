@@ -30,6 +30,7 @@ import theme.components.SelectableText
 import theme.lsuGold
 import theme.lsuPurple
 import ui.ContentCard
+import ui.ContentCardPlacement
 import ui.Section
 import ui.WebsiteSection
 import utils.CdnImage
@@ -40,9 +41,9 @@ fun SchoolContent() {
         ContentCard(
             backgroundColor = lsuPurple,
             borderColor = lsuGold,
-            fullWidth = true,
             image = { SchoolPictures() },
-            details = { SchoolDescription() }
+            details = { SchoolDescription() },
+            placement = ContentCardPlacement.FULL_WIDTH,
         )
     }
 }
@@ -56,7 +57,7 @@ private fun SchoolDescription(modifier: Modifier = Modifier) {
         SelectableText(
             text = stringResource(Res.string.school_name),
             color = Color.White,
-            style = MaterialTheme.typography.displaySmall
+            style = MaterialTheme.typography.displaySmall,
         )
         SelectableText(
             text = stringResource(Res.string.school_location),
@@ -78,7 +79,7 @@ private fun SchoolDescription(modifier: Modifier = Modifier) {
         SelectableText(
             text = stringResource(Res.string.school_description),
             color = Color.White,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
         )
     }
 }

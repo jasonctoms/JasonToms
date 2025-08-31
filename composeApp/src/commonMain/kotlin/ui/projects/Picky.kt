@@ -3,7 +3,8 @@ package ui.projects
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -25,10 +26,11 @@ import theme.components.AppForStoreLink
 import theme.components.LinkBadge
 import theme.components.LinkBadgeType
 import ui.ContentCard
+import ui.ContentCardPlacement
 import utils.CdnImage
 
 @Composable
-fun Picky(modifier: Modifier = Modifier) {
+fun ColumnScope.Picky(modifier: Modifier = Modifier) {
     ContentCard(
         modifier = modifier,
         backgroundColor = Color.Unspecified,
@@ -36,6 +38,7 @@ fun Picky(modifier: Modifier = Modifier) {
         image = { PickyIcon() },
         details = { PickyDetails() },
         backgroundImage = Res.drawable.picky_background,
+        placement = ContentCardPlacement.START,
     )
 }
 
@@ -57,24 +60,25 @@ private fun PickyDetails() {
     Column(verticalArrangement = Arrangement.spacedBy(Dimens.xSmall)) {
         TextWithBackground(
             text = stringResource(Res.string.project_1_title),
-            style = MaterialTheme.typography.headlineMedium
+            style = MaterialTheme.typography.displaySmall
         )
         TextWithBackground(
             text = stringResource(Res.string.project_1_description),
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyMedium,
         )
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(Dimens.small)
+        FlowRow(
+            itemVerticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(Dimens.small),
+            verticalArrangement = Arrangement.spacedBy(Dimens.xSmall)
         ) {
             LinkBadge(
                 modifier = Modifier.height(50.dp),
-                type = LinkBadgeType.Website("https://picky.ink")
+                type = LinkBadgeType.AppStore(AppForStoreLink.PICKY)
             )
             LinkBadge(
                 modifier = Modifier.height(50.dp),
-                type = LinkBadgeType.AppStore(AppForStoreLink.PICKY)
+                type = LinkBadgeType.Website("https://picky.ink")
             )
         }
     }

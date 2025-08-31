@@ -15,11 +15,13 @@ import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.personal_soapbox
 import org.jetbrains.compose.resources.stringResource
 import theme.Dimens
+import theme.LocalWindowSizeClass
 import theme.components.SelectableText
 import utils.CdnImage
 
 @Composable
-fun Soapbox(widthClass: WindowWidthSizeClass, modifier: Modifier = Modifier) {
+fun Soapbox(modifier: Modifier = Modifier) {
+    val widthClass = LocalWindowSizeClass.current.widthSizeClass
     if (widthClass == WindowWidthSizeClass.Compact) {
         Column(
             modifier = modifier,

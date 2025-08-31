@@ -2,6 +2,7 @@ package ui.projects
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,16 +22,18 @@ import theme.components.SelectableText
 import theme.dockerBlue
 import theme.linuxMintGreen
 import ui.ContentCard
+import ui.ContentCardPlacement
 import utils.CdnImage
 
 @Composable
-fun HomeServer(modifier: Modifier = Modifier) {
+fun ColumnScope.HomeServer(modifier: Modifier = Modifier) {
     ContentCard(
         modifier = modifier,
         backgroundColor = dockerBlue,
         borderColor = linuxMintGreen,
         image = { HomeServerImages() },
         details = { HomeServerDescription() },
+        placement = ContentCardPlacement.END,
     )
 }
 
@@ -65,12 +68,12 @@ private fun HomeServerDescription() {
     Column(verticalArrangement = Arrangement.spacedBy(Dimens.xSmall)) {
         SelectableText(
             text = stringResource(Res.string.project_2_title),
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.displaySmall,
             color = Color.White,
         )
         SelectableText(
             text = stringResource(Res.string.project_2_description),
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyMedium,
             color = Color.White,
         )
     }
