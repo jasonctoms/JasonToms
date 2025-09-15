@@ -14,7 +14,7 @@ compose-material3 = "1.9.0-beta04"
 compose-multiplatform = "1.9.0-rc01"
 coil = "3.3.0"
 junit = "4.13.2"
-kotlin = "2.2.10"
+kotlin = "2.2.20"
 kotlinx-datetime = "0.7.1"
 ktor = "3.2.3"
 
