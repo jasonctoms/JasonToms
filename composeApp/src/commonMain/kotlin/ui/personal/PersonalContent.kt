@@ -16,14 +16,15 @@ import ui.containerCard
 fun PersonalContent(modifier: Modifier = Modifier) {
     Section(section = WebsiteSection.PERSONAL, modifier = modifier) {
         Intro()
-        Soapbox(
-            modifier = Modifier
-                .fillMaxWidth()
-                .containerCard(
-                    backgroundColor = MaterialTheme.colorScheme.primaryContainer,
-                    borderColor = MaterialTheme.colorScheme.secondary
-                ).padding(Dimens.large),
-        )
+        // Leave this out for now, too much going on to have a concise message
+//        Soapbox(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .containerCard(
+//                    backgroundColor = MaterialTheme.colorScheme.primaryContainer,
+//                    borderColor = MaterialTheme.colorScheme.secondary
+//                ).padding(Dimens.large),
+//        )
     }
 }
 
