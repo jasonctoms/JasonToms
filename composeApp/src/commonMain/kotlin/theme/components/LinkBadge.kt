@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.app_store_badge
@@ -30,7 +31,6 @@ import jasontoms.composeapp.generated.resources.ic_link
 import jasontoms.composeapp.generated.resources.website
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import theme.Dimens
 
 @Composable
@@ -46,7 +46,6 @@ fun LinkBadge(type: LinkBadgeType, modifier: Modifier = Modifier) {
                 contentDescription = "Download on the App Store",
                 contentScale = ContentScale.FillWidth,
             )
-
         }
 
         is LinkBadgeType.PlayStore -> {

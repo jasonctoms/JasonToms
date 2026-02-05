@@ -19,7 +19,7 @@ fun AdaptiveFlowRow(
     modifier: Modifier = Modifier,
     content: @Composable (itemWidth: Dp) -> Unit
 ) {
-    LocalWindowSizeClass.current?.widthSizeClass.let { widthClass ->
+    LocalWindowSizeClass.current.widthSizeClass.let { widthClass ->
         val itemsPerRow = when (widthClass) {
             WindowWidthSizeClass.Compact -> itemsPerRow.compact
             WindowWidthSizeClass.Medium -> itemsPerRow.medium
