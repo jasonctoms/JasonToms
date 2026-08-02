@@ -25,7 +25,7 @@ kotlin {
         binaries.executable()
     }
 
-    androidLibrary {
+    android {
         namespace = "com.jasontoms"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         compilerOptions {
