@@ -24,7 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import jasontoms.composeapp.generated.resources.Res
-import jasontoms.composeapp.generated.resources.work_ai_description
+import jasontoms.composeapp.generated.resources.work_company_info
 import jasontoms.composeapp.generated.resources.work_my_part
 import org.jetbrains.compose.resources.stringResource
 import theme.ContentPreview
@@ -117,7 +117,7 @@ fun ColumnScope.WorkCard(
                 )
                 VerticalSpacer(Dimens.small)
                 Text(
-                    text = stringResource(Res.string.work_ai_description),
+                    text = stringResource(Res.string.work_company_info),
                     color = textColor,
                     style = MaterialTheme.typography.bodySmall,
                     fontWeight = FontWeight.SemiBold,

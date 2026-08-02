@@ -10,11 +10,12 @@ import ui.WebsiteSection
 @Composable
 fun WorkContent() {
     Section(section = WebsiteSection.WORK) {
-        Stuh(placement = ContentCardPlacement.START)
-        Vipps(placement = ContentCardPlacement.END)
-        Nrk(placement = ContentCardPlacement.START)
-        Holte(placement = ContentCardPlacement.END)
-        Kongsberg(placement = ContentCardPlacement.START)
+        Insulet(placement = ContentCardPlacement.START)
+        Stuh(placement = ContentCardPlacement.END)
+        Vipps(placement = ContentCardPlacement.START)
+        Nrk(placement = ContentCardPlacement.END)
+        Holte(placement = ContentCardPlacement.START)
+        Kongsberg(placement = ContentCardPlacement.END)
     }
 }
 

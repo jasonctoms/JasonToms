@@ -19,6 +19,8 @@ val stuhBackground = Color(0xFFFAF7F4)
 val stuhText = Color(0xFF121A12)
 val stuhGreen = Color(0xFF67E702)
 val stuhPurple = Color(0xFFC09FFF)
+val insuletPurple = Color(0xFF743DBC)
+val omnipodOrange = Color(0xFFFFA700)
 
 val primaryLight = Color(0xFF38608F)
 val onPrimaryLight = Color(0xFFFFFFFF)

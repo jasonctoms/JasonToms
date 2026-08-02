@@ -15,6 +15,8 @@ enum class CdnImage(val url: String) {
     DOCKER_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1756634333/docker_xxu6nq.png"),
     LINUX_MINT_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1756633356/linux_mint_sqgvs2.png"),
 
+    INSULET_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1785704793/insulet_g2wi0y.png"),
+    OMNIPOD_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1785704793/omnipod_pgufyy.png"),
     STUH_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756649446/St%C3%B8_logo_RGB_vcla37.png"),
     BANKID_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756651021/bankid-logo_h69qnp.png"),
     VIPPS_LOGO("https://res.cloudinary.com/dclcigdkv/image/upload/v1756650781/vipps_vyqjmx.png"),

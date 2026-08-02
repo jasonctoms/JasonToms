@@ -31,7 +31,7 @@ import utils.CdnImage
 
 @Composable
 fun ScreenHeader(modifier: Modifier = Modifier) {
-    LocalWindowSizeClass.current?.widthSizeClass?.let { widthClass ->
+    LocalWindowSizeClass.current.widthSizeClass.let { widthClass ->
         Box(
             modifier = modifier
                 .fillMaxWidth()
