@@ -27,8 +27,6 @@ fun Footer(modifier: Modifier = Modifier) {
     val platform = remember { getPlatform() }
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         VerticalSpacer(Dimens.extraLarge)
-        TemporaryDisclaimer()
-        VerticalSpacer(Dimens.large)
         SelectableText(
             text = stringResource(Res.string.footer, platform.name),
             color = MaterialTheme.colorScheme.onBackground,

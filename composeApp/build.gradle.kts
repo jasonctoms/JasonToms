@@ -67,9 +67,5 @@ kotlin {
             implementation(libs.ktor.js)
         }
     }
-
-    compilerOptions {
-        freeCompilerArgs.add("-Xcontext-parameters")
-    }
 }
 
