@@ -33,7 +33,7 @@ fun ColumnScope.HomeServer(modifier: Modifier = Modifier) {
         borderColor = linuxMintGreen,
         image = { HomeServerImages() },
         details = { HomeServerDescription() },
-        placement = ContentCardPlacement.END,
+        placement = ContentCardPlacement.START,
     )
 }
 

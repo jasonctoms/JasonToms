@@ -12,6 +12,7 @@ import ui.WebsiteSection
 fun ProjectsContent() {
     Section(section = WebsiteSection.PROJECTS) {
         Picky()
+        Breez()
         HomeServer()
     }
 }

@@ -125,6 +125,7 @@ sealed class LinkBadgeType(val url: String) {
 
 enum class AppForStoreLink(val urlIdentifier: String) {
     PICKY("picky-tattooing-companion/id6740286413"),
+    BREEZ("make-life-a-breez/id6801916308"),
     BANKID("no.vipps.bankid"),
     VIPPS("no.dnb.vipps"),
     NRK_TV("no.nrk.tv"),
