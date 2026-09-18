@@ -1,10 +1,12 @@
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import navigation.Navigator
 import theme.AppTheme
-import ui.WebsiteContent
+import ui.SiteScaffold
 
 @Composable
-fun App() {
+fun App(navigator: Navigator = remember { Navigator() }) {
     AppTheme {
-        WebsiteContent()
+        SiteScaffold(navigator = navigator)
     }
 }

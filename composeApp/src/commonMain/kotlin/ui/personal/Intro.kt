@@ -33,7 +33,7 @@ fun Intro() {
             modifier = Modifier.fillMaxWidth(),
             itemsPerRow = ItemsPerRow(
                 compact = 2,
-                medium = 4,
+                medium = 5,
                 expanded = 5,
             )
         ) { itemWidth ->

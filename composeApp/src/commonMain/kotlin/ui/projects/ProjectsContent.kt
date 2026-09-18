@@ -1,8 +1,6 @@
 package ui.projects
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import theme.ContentPreview
 import theme.Previews
 import ui.Section

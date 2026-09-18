@@ -50,6 +50,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.androidx.lifecycle)
             implementation(libs.compose.runtime)
+            implementation(libs.compose.animation)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
             implementation(libs.compose.material3.windowSizeClass)
@@ -59,6 +60,7 @@ kotlin {
             implementation(libs.coil)
             implementation(libs.coil.ktor)
             implementation(libs.kotlinx.datetime)
+            implementation(libs.navigation3.ui)
         }
         iosMain.dependencies {
             implementation(libs.ktor.darwin)
@@ -69,3 +71,6 @@ kotlin {
     }
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.targets.js.ir.DefaultIncrementalSyncTask>().configureEach {
+    outputs.upToDateWhen { false }
+}

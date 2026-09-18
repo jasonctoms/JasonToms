@@ -26,7 +26,10 @@ fun AppTheme(content: @Composable () -> Unit) {
     }
     if (windowSizeClass != null) {
         CompositionLocalProvider(LocalWindowSizeClass provides windowSizeClass) {
-            MaterialTheme(colorScheme = if (isSystemInDarkTheme()) darkScheme else lightScheme) {
+            MaterialTheme(
+                colorScheme = if (isSystemInDarkTheme()) darkScheme else lightScheme,
+                typography = appTypography(),
+            ) {
                 Box(modifier = Modifier.fillMaxSize()) {
                     content()
                 }
