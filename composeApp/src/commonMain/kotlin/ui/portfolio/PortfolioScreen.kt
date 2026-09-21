@@ -41,7 +41,11 @@ import ui.work.WorkContent
 private val portfolioSections = listOf(WebsiteSection.PROJECTS, WebsiteSection.WORK, WebsiteSection.SCHOOL)
 
 @Composable
-fun PortfolioScreen(onNavigate: (Route) -> Unit, modifier: Modifier = Modifier) {
+fun PortfolioScreen(
+    onNavigate: (Route) -> Unit,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(),
+) {
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
     // leave a little breathing room above a section when jumping to it
@@ -52,7 +56,7 @@ fun PortfolioScreen(onNavigate: (Route) -> Unit, modifier: Modifier = Modifier) 
         state = listState,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(sectionSpacing()),
-        contentPadding = PaddingValues(top = Dimens.medium),
+        contentPadding = PaddingValues(top = contentPadding.calculateTopPadding() + Dimens.medium),
     ) {
         item {
             PortfolioHeader(
