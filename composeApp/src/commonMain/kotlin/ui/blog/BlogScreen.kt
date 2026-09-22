@@ -2,6 +2,7 @@ package ui.blog
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -246,9 +247,15 @@ private fun PostLink(post: BlogPost, selected: Boolean, onClick: () -> Unit) {
 @Composable
 private fun PostContent(post: BlogPost, markdown: Result<String>?, modifier: Modifier = Modifier) {
     val compact = LocalWindowSizeClass.current.widthSizeClass == WindowWidthSizeClass.Compact
+    val shape = MaterialTheme.shapes.extraLarge
 
+    // long text is hard to read over the dotted background, so the post sits on a card
     Column(
-        modifier = modifier.widthIn(max = Dimens.maxReadingWidth),
+        modifier = modifier
+            .widthIn(max = Dimens.maxReadingWidth)
+            .background(color = MaterialTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.92f), shape = shape)
+            .border(width = 1.dp, color = MaterialTheme.colorScheme.outlineVariant, shape = shape)
+            .padding(if (compact) Dimens.medium else Dimens.large),
         verticalArrangement = Arrangement.spacedBy(Dimens.small),
     ) {
         SelectableText(
