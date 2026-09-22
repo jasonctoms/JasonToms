@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import theme.Dimens
+import theme.SitePreview
 
 const val CARD_FLIP_DURATION = 350
 
@@ -52,19 +53,21 @@ enum class FlipDirection { VERTICAL, HORIZONTAL }
 @Preview
 @Composable
 fun TestFlip() {
-    var faceUp by remember { mutableStateOf(true) }
-    DoubleSidedLayout(
-        faceUp = faceUp,
-        front = {
-            Card(onClick = { faceUp = !faceUp }) {
-                Text(modifier = Modifier.padding(Dimens.medium), text = "Front")
-            }
-        },
-        back = {
-            Card(modifier = Modifier.graphicsLayer { rotationX = -180f }, onClick = { faceUp = !faceUp }) {
-                Text(modifier = Modifier.padding(Dimens.medium), text = "Back")
-            }
-        },
-        flipDirection = FlipDirection.VERTICAL,
-    )
+    SitePreview {
+        var faceUp by remember { mutableStateOf(true) }
+        DoubleSidedLayout(
+            faceUp = faceUp,
+            front = {
+                Card(onClick = { faceUp = !faceUp }) {
+                    Text(modifier = Modifier.padding(Dimens.medium), text = "Front")
+                }
+            },
+            back = {
+                Card(modifier = Modifier.graphicsLayer { rotationX = -180f }, onClick = { faceUp = !faceUp }) {
+                    Text(modifier = Modifier.padding(Dimens.medium), text = "Back")
+                }
+            },
+            flipDirection = FlipDirection.VERTICAL,
+        )
+    }
 }

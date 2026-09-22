@@ -25,10 +25,10 @@ import jasontoms.composeapp.generated.resources.portfolio_title
 import kotlinx.coroutines.launch
 import navigation.Route
 import org.jetbrains.compose.resources.stringResource
-import theme.AppTheme
 import theme.Dimens
 import theme.LocalWindowSizeClass
 import theme.Previews
+import theme.SitePreview
 import theme.components.ContentColumn
 import theme.components.SelectableText
 import theme.sectionSpacing
@@ -121,7 +121,7 @@ private fun PortfolioHeader(onSectionClick: (WebsiteSection) -> Unit) {
 @Previews
 @Composable
 private fun PortfolioScreenPreview() {
-    AppTheme {
+    SitePreview {
         PortfolioScreen(onNavigate = {})
     }
 }

@@ -1,0 +1,15 @@
+// Cloudflare Workers config for jasontoms.com. The site is only static files, deployed by the
+// GitHub workflow in .github/workflows/deploy.yml.
+{
+    "name": "jasontoms",
+    "compatibility_date": "2026-09-21",
+    "assets": {
+        "directory": "./composeApp/build/dist/wasmJs/productionExecutable",
+        // any path that isn't a real file (like /blog/2026-09-21) gets index.html, and the app
+        // routes from the path
+        "not_found_handling": "single-page-application"
+    },
+    "routes": [
+        { "pattern": "jasontoms.com", "custom_domain": true }
+    ]
+}

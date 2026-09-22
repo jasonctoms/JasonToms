@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -24,10 +23,10 @@ import jasontoms.composeapp.generated.resources.hero_cta
 import jasontoms.composeapp.generated.resources.hero_title
 import jasontoms.composeapp.generated.resources.hero_tagline
 import org.jetbrains.compose.resources.stringResource
-import theme.AppTheme
 import theme.Dimens
 import theme.LocalWindowSizeClass
 import theme.Previews
+import theme.SitePreview
 import theme.components.ContentColumn
 import theme.components.SelectableText
 import theme.components.SocialLinks
@@ -108,9 +107,7 @@ fun HomeHero(onExplorePortfolio: () -> Unit, modifier: Modifier = Modifier) {
 @Previews
 @Composable
 private fun HomeHeroPreview() {
-    AppTheme {
-        Box(modifier = Modifier.fillMaxSize()) {
-            HomeHero(onExplorePortfolio = {})
-        }
+    SitePreview {
+        HomeHero(onExplorePortfolio = {})
     }
 }

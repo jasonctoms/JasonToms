@@ -11,9 +11,9 @@ import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.soapbox_title
 import navigation.Route
 import org.jetbrains.compose.resources.stringResource
-import theme.AppTheme
 import theme.Dimens
 import theme.Previews
+import theme.SitePreview
 import theme.sectionSpacing
 import ui.Section
 import ui.WebsiteSection
@@ -45,7 +45,7 @@ fun HomeScreen(
 @Previews
 @Composable
 private fun HomeScreenPreview() {
-    AppTheme {
+    SitePreview {
         HomeScreen(onNavigate = {})
     }
 }

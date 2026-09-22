@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- pages live at paths like /blog/2026-09-21, so relative URLs must resolve from the root -->
+    <base href="/">
 
     <title>Jason Toms — App Developer &amp; Engineering Manager</title>
     <meta name="description" content="Jason Toms is an app developer and engineering manager at Insulet, working in Kotlin, Jetpack Compose and Kotlin Multiplatform. Portfolio of his apps, including PICKY and Breez, and his work at Stø (BankID), Vipps and NRK.">
@@ -111,6 +113,7 @@
     <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_regular.ttf" as="fetch" type="font/ttf" crossorigin>
     <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_bold.ttf" as="fetch" type="font/ttf" crossorigin>
     <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_bold_italic.ttf" as="fetch" type="font/ttf" crossorigin>
+    <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_italic.ttf" as="fetch" type="font/ttf" crossorigin>
 
     <link type="text/css" rel="stylesheet" href="styles.css">
     <script type="application/javascript" src="composeApp.js"></script>
@@ -129,8 +132,9 @@
             <h1>Jason Toms</h1>
             <p id="tagline">App developer and engineering manager, currently leading the DevX Tools team at Insulet.</p>
             <nav aria-label="Pages">
-                <a href="#/">Home</a>
-                <a href="#/portfolio">Portfolio</a>
+                <a href="/">Home</a>
+                <a href="/portfolio">Portfolio</a>
+                <a href="/blog">Blog</a>
             </nav>
         </header>
 

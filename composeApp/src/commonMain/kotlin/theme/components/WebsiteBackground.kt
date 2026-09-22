@@ -18,11 +18,11 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
+import theme.AppTheme
 import theme.Previews
 import kotlin.math.PI
 import kotlin.math.sin
 
-@Previews
 @Composable
 fun WebsiteBackground() {
     val infiniteTransition = rememberInfiniteTransition()
@@ -51,6 +51,14 @@ fun WebsiteBackground() {
             baseColor = baseColor,
             accentColor = accentColor,
         )
+    }
+}
+
+@Previews
+@Composable
+private fun WebsiteBackgroundPreview() {
+    AppTheme {
+        WebsiteBackground()
     }
 }
 

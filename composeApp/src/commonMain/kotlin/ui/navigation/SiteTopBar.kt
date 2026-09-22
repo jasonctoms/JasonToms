@@ -38,10 +38,10 @@ import androidx.compose.ui.semantics.Role
 import navigation.Route
 import navigation.TopLevelDestination
 import org.jetbrains.compose.resources.stringResource
-import theme.AppTheme
 import theme.Dimens
 import theme.LocalWindowSizeClass
 import theme.Previews
+import theme.SitePreview
 import theme.pageGutter
 
 /**
@@ -82,7 +82,7 @@ fun SiteTopBar(
                     TopLevelDestination.entries.forEach { destination ->
                         NavPill(
                             label = stringResource(destination.label),
-                            selected = currentRoute == destination.route,
+                            selected = destination.contains(currentRoute),
                             onClick = { onNavigate(destination.route) },
                         )
                     }
@@ -129,7 +129,7 @@ private fun NavPill(label: String, selected: Boolean, onClick: () -> Unit) {
 @Previews
 @Composable
 private fun SiteTopBarPreview() {
-    AppTheme {
+    SitePreview {
         SiteTopBar(currentRoute = Route.Home, onNavigate = {})
     }
 }

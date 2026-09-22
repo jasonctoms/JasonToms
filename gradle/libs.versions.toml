@@ -16,6 +16,7 @@ junit = "4.13.2"
 kotlin = "2.4.20"
 kotlinx-datetime = "0.8.0"
 ktor = "3.5.2"
+markdown-renderer = "0.45.0"
 navigation3 = "1.1.1"
 
 [libraries]
@@ -42,6 +43,8 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 ktor-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
 ktor-js = { group = "io.ktor", name = "ktor-client-js", version.ref = "ktor" }
 ktor-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+markdown-renderer-coil3 = { module = "com.mikepenz:multiplatform-markdown-renderer-coil3", version.ref = "markdown-renderer" }
+markdown-renderer-m3 = { module = "com.mikepenz:multiplatform-markdown-renderer-m3", version.ref = "markdown-renderer" }
 navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
 
 [plugins]

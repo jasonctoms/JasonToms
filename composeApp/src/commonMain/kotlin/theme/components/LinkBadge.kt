@@ -40,6 +40,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import theme.Dimens
+import theme.SitePreview
 
 @Composable
 fun LinkBadge(type: LinkBadgeType, modifier: Modifier = Modifier) {
@@ -135,26 +136,28 @@ private fun WebsiteBadge(sizedLike: StoreBadgeStyle, onClick: () -> Unit, modifi
 @Composable
 @Preview
 private fun LinkBadgePreview() {
-    Column(
-        modifier = Modifier.padding(Dimens.small),
-        verticalArrangement = Arrangement.spacedBy(Dimens.xSmall),
-    ) {
-        LinkBadge(
-            type = LinkBadgeType.AppStore(AppForStoreLink.PICKY),
-            modifier = Modifier.width(150.dp)
-        )
-        LinkBadge(
-            type = LinkBadgeType.Website("https://picky.ink"),
-            modifier = Modifier.width(150.dp)
-        )
-        LinkBadge(
-            type = LinkBadgeType.Website("https://vipps.no", sizedLike = StoreBadgeStyle.PLAY_STORE),
-            modifier = Modifier.width(150.dp)
-        )
-        LinkBadge(
-            type = LinkBadgeType.PlayStore(AppForStoreLink.BANKID),
-            modifier = Modifier.width(150.dp)
-        )
+    SitePreview {
+        Column(
+            modifier = Modifier.padding(Dimens.small),
+            verticalArrangement = Arrangement.spacedBy(Dimens.xSmall),
+        ) {
+            LinkBadge(
+                type = LinkBadgeType.AppStore(AppForStoreLink.PICKY),
+                modifier = Modifier.width(150.dp)
+            )
+            LinkBadge(
+                type = LinkBadgeType.Website("https://picky.ink"),
+                modifier = Modifier.width(150.dp)
+            )
+            LinkBadge(
+                type = LinkBadgeType.Website("https://vipps.no", sizedLike = StoreBadgeStyle.PLAY_STORE),
+                modifier = Modifier.width(150.dp)
+            )
+            LinkBadge(
+                type = LinkBadgeType.PlayStore(AppForStoreLink.BANKID),
+                modifier = Modifier.width(150.dp)
+            )
+        }
     }
 }
 

@@ -25,6 +25,7 @@ import navigation.Route
 import theme.AppTheme
 import theme.Previews
 import theme.components.WebsiteBackground
+import ui.blog.BlogScreen
 import ui.home.HomeScreen
 import ui.navigation.SiteTopBar
 import ui.portfolio.PortfolioScreen
@@ -33,8 +34,6 @@ import ui.portfolio.PortfolioScreen
 fun SiteScaffold(navigator: Navigator) {
     Box(modifier = Modifier.fillMaxSize()) {
         WebsiteBackground()
-        // the top bar floats over the pages so they scroll behind its translucent background;
-        // pages pad their content by its measured height so nothing starts hidden underneath
         val density = LocalDensity.current
         var topBarHeight by remember { mutableStateOf(0.dp) }
         val contentPadding = PaddingValues(top = topBarHeight)
@@ -51,6 +50,9 @@ fun SiteScaffold(navigator: Navigator) {
                 }
                 entry<Route.Portfolio> {
                     PortfolioScreen(onNavigate = navigator::navigateTo, contentPadding = contentPadding)
+                }
+                entry<Route.Blog>(clazzContentKey = { "blog" }) { route ->
+                    BlogScreen(route = route, onNavigate = navigator::navigateTo, contentPadding = contentPadding)
                 }
             },
         )

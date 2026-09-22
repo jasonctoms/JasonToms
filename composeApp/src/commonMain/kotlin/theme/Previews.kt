@@ -1,17 +1,16 @@
 package theme
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import theme.components.ContentColumn
+import theme.components.WebsiteBackground
 
 private object PreviewDimens {
     // Phone-like sizes
@@ -45,13 +44,21 @@ private object PreviewDimens {
 )
 annotation class Previews
 
+/** The app theme with the site's background behind [content], so previews look like the real page. */
+@Composable
+fun SitePreview(content: @Composable () -> Unit) {
+    AppTheme {
+        WebsiteBackground()
+        content()
+    }
+}
+
 @Composable
 fun ContentPreview(content: @Composable ColumnScope.() -> Unit) {
-    AppTheme {
+    SitePreview {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(color = MaterialTheme.colorScheme.background)
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {

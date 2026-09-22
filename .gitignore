@@ -18,3 +18,5 @@ captures
 **/xcshareddata/WorkspaceSettings.xcsettings
 yarn.lock
 node_modules/
+.wrangler/
+.claude/

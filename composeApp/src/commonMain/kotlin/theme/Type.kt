@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.em
 import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.quattrocento_sans_bold
 import jasontoms.composeapp.generated.resources.quattrocento_sans_bold_italic
+import jasontoms.composeapp.generated.resources.quattrocento_sans_italic
 import jasontoms.composeapp.generated.resources.quattrocento_sans_regular
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.FontResource
@@ -27,6 +28,7 @@ data class AppFont(
  */
 val appFonts: List<AppFont> = listOf(
     AppFont(Res.font.quattrocento_sans_regular, FontWeight.Normal),
+    AppFont(Res.font.quattrocento_sans_italic, FontWeight.Normal, FontStyle.Italic),
     AppFont(Res.font.quattrocento_sans_bold, FontWeight.Bold),
     AppFont(Res.font.quattrocento_sans_bold_italic, FontWeight.Bold, FontStyle.Italic),
 )
