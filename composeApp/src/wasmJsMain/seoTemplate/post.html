@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- pages live at paths like /blog/2026-09-21, so relative URLs must resolve from the root -->
+    <base href="/">
+
+    <title><!--POST_TITLE--> — Jason Toms</title>
+    <meta name="description" content="<!--POST_DESCRIPTION-->">
+    <meta name="author" content="Jason Toms">
+    <link rel="canonical" href="<!--POST_URL-->">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#f8f9ff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111418" media="(prefers-color-scheme: dark)">
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Jason Toms">
+    <meta property="og:title" content="<!--POST_TITLE--> — Jason Toms">
+    <meta property="og:description" content="<!--POST_DESCRIPTION-->">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="<!--POST_DATE_ISO-->">
+    <meta property="article:author" content="Jason Toms">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="<!--POST_URL-->">
+    <meta property="og:image" content="https://res.cloudinary.com/dclcigdkv/image/upload/v1754918266/profile_penrh9.webp">
+    <meta property="og:image:alt" content="Portrait of Jason Toms">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<!--POST_TITLE--> — Jason Toms">
+    <meta name="twitter:description" content="<!--POST_DESCRIPTION-->">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dclcigdkv/image/upload/v1754918266/profile_penrh9.webp">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "<!--POST_TITLE_JSON-->",
+        "datePublished": "<!--POST_DATE_ISO-->",
+        "url": "<!--POST_URL-->",
+        "mainEntityOfPage": "<!--POST_URL-->",
+        "author": {
+            "@type": "Person",
+            "name": "Jason Toms",
+            "url": "https://jasontoms.com/#jason-toms"
+        }
+    }
+    </script>
+
+    <!--
+      Start downloading the site font alongside the Wasm bundle instead of after it. These must match
+      the fetch() that Compose Resources makes (same URL, CORS mode) for the browser to reuse them.
+    -->
+    <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_regular.ttf" as="fetch" type="font/ttf" crossorigin>
+    <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_bold.ttf" as="fetch" type="font/ttf" crossorigin>
+    <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_bold_italic.ttf" as="fetch" type="font/ttf" crossorigin>
+    <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_italic.ttf" as="fetch" type="font/ttf" crossorigin>
+
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <!--
+      The query string changes every build, so a browser that already has an old composeApp.js
+      cached (however stubbornly) is forced to fetch this build's instead of reusing one that
+      points at Wasm chunk files this deploy no longer has.
+    -->
+    <script type="application/javascript" src="composeApp.js?v=<!--BUILD_VERSION-->"></script>
+</head>
+<body>
+    <!--
+      Crawlable text layer.
+
+      The Compose/WASM app renders into a <canvas> inside a shadow root, which contains no text a
+      search engine can read. This block mirrors the post's own content as real HTML, generated
+      from its markdown by the generateSeoFiles Gradle task, so it is present both in the served
+      markup and in the rendered DOM. Unlike the homepage's SEO block (seoTemplate/index.html),
+      this one is specific to the post so each URL has unique, substantial content instead of the
+      same boilerplate repeated on every page.
+    -->
+    <main id="seo-content">
+        <header>
+            <p><a href="/">Jason Toms</a></p>
+            <nav aria-label="Pages">
+                <a href="/">Home</a>
+                <a href="/portfolio">Portfolio</a>
+                <a href="/blog">Blog</a>
+            </nav>
+        </header>
+
+        <article>
+            <p><a href="/blog">&larr; All posts</a></p>
+            <h1><!--POST_TITLE--></h1>
+            <p><time datetime="<!--POST_DATE_ISO-->"><!--POST_DATE_TEXT--></time></p>
+            <!--POST_BODY-->
+        </article>
+    </main>
+
+    <div id="composeApp"></div>
+
+    <!--
+      Loading splash.
+    -->
+    <div id="splash" aria-hidden="true">
+        <!-- each dot is delayed by its diagonal (column + row), which sends a wave across the grid -->
+        <div class="splash-grid">
+            <span style="--d:0"></span>
+            <span style="--d:1"></span>
+            <span style="--d:2"></span>
+            <span style="--d:3"></span>
+            <span style="--d:4"></span>
+            <span style="--d:5"></span>
+            <span style="--d:6"></span>
+            <span style="--d:1"></span>
+            <span style="--d:2"></span>
+            <span style="--d:3"></span>
+            <span style="--d:4"></span>
+            <span style="--d:5"></span>
+            <span style="--d:6"></span>
+            <span style="--d:7"></span>
+            <span style="--d:2"></span>
+            <span style="--d:3"></span>
+            <span style="--d:4"></span>
+            <span style="--d:5"></span>
+            <span style="--d:6"></span>
+            <span style="--d:7"></span>
+            <span style="--d:8"></span>
+        </div>
+        <p class="splash-name">Loading Jason<span class="splash-ellipsis"><span>.</span><span>.</span><span>.</span></span></p>
+    </div>
+
+    <script>
+        (function () {
+            var FADE_MS = 600;
+            var TIMEOUT_MS = 20000;
+            var splash = document.getElementById('splash');
+            var deadline = Date.now() + TIMEOUT_MS;
+            var done = false;
+
+            function dismiss() {
+                if (done) return;
+                done = true;
+                if (!splash) return;
+                splash.classList.add('is-hidden');
+                setTimeout(function () { splash.remove(); }, FADE_MS);
+            }
+
+            // main.kt adds this class after the first frame is drawn with the site font loaded
+            (function poll() {
+                if (document.documentElement.classList.contains('app-ready')) {
+                    dismiss();
+                    return;
+                }
+                if (Date.now() > deadline) { dismiss(); return; }
+                setTimeout(poll, 100);
+            })();
+        })();
+    </script>
+</body>
+</html>

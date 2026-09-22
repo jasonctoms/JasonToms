@@ -116,7 +116,12 @@
     <link rel="preload" href="composeResources/jasontoms.composeapp.generated.resources/font/quattrocento_sans_italic.ttf" as="fetch" type="font/ttf" crossorigin>
 
     <link type="text/css" rel="stylesheet" href="styles.css">
-    <script type="application/javascript" src="composeApp.js"></script>
+    <!--
+      The query string changes every build, so a browser that already has an old composeApp.js
+      cached (however stubbornly) is forced to fetch this build's instead of reusing one that
+      points at Wasm chunk files this deploy no longer has.
+    -->
+    <script type="application/javascript" src="composeApp.js?v=<!--BUILD_VERSION-->"></script>
 </head>
 <body>
     <!--
@@ -125,7 +130,8 @@
       The Compose/WASM app renders into a <canvas> inside a shadow root, which
       contains no text a search engine can read. This block mirrors that content
       as real HTML so it is present both in the served markup and in the rendered
-      DOM.
+      DOM. Individual blog posts get their own page (seoTemplate/post.html) with
+      their own crawlable content instead of sharing this one.
     -->
     <main id="seo-content">
         <header>
@@ -230,6 +236,14 @@
                 Coursework in circuits, microprocessors, optical electronics, control systems and
                 microfluidic biochips. Served as President of the LSU chapter of IEEE.
             </p>
+        </section>
+
+        <section id="blog">
+            <h2>Blog</h2>
+            <p>Posts, newest first.</p>
+            <ul>
+                <!--BLOG_POSTS-->
+            </ul>
         </section>
 
         <h2>Elsewhere</h2>

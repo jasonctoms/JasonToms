@@ -5,9 +5,16 @@
     "compatibility_date": "2026-09-21",
     "assets": {
         "directory": "./composeApp/build/dist/wasmJs/productionExecutable",
-        // any path that isn't a real file (like /blog/2026-09-21) gets index.html, and the app
-        // routes from the path
-        "not_found_handling": "single-page-application"
+        // any path that isn't a real file (like /portfolio) gets index.html, and the app routes
+        // from the path. Blog posts are the exception: generateSeoFiles (composeApp/build.gradle.kts)
+        // writes a real file per post at blog/<date>.html, so /blog/2026-09-21 is a real file and
+        // this fallback never kicks in for it — crawlers get that post's own static content instead
+        // of the generic shell.
+        "not_found_handling": "single-page-application",
+        // serves blog/2026-09-21.html at the clean URL /blog/2026-09-21 (and redirects the
+        // trailing-slash form to it); this is already Cloudflare's default, set explicitly since
+        // generateSeoFiles depends on it
+        "html_handling": "auto-trailing-slash"
     },
     "routes": [
         { "pattern": "jasontoms.com", "custom_domain": true }
