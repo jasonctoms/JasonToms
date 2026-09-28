@@ -74,7 +74,7 @@ kotlin {
             implementation(libs.ktor.darwin)
         }
         androidMain.dependencies {
-            implementation("org.jetbrains.compose.ui:ui-tooling:1.12.0")
+            implementation("org.jetbrains.compose.ui:ui-tooling:1.12.1")
         }
         wasmJsMain {
             resources.srcDir(tasks.named("generateSeoFiles"))
