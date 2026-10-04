@@ -13,6 +13,7 @@ enum class CdnImage(val url: String) {
 
     PICKY_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1789772984/picky_icon_fzqurp.png"),
     BREEZ_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1789768632/launch_icon_3x_yra0os.png"),
+    HELP_MY_CITY_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1791124046/helpy_z8jyuz.webp"),
     DOCKER_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1756634333/docker_xxu6nq.png"),
     LINUX_MINT_ICON("https://res.cloudinary.com/dclcigdkv/image/upload/v1756633356/linux_mint_sqgvs2.png"),
 

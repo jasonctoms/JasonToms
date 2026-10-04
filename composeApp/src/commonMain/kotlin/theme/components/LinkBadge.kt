@@ -33,7 +33,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import jasontoms.composeapp.generated.resources.Res
 import jasontoms.composeapp.generated.resources.app_store_badge
+import jasontoms.composeapp.generated.resources.github
 import jasontoms.composeapp.generated.resources.google_play_badge
+import jasontoms.composeapp.generated.resources.ic_github
 import jasontoms.composeapp.generated.resources.ic_link
 import jasontoms.composeapp.generated.resources.website
 import org.jetbrains.compose.resources.DrawableResource
@@ -62,6 +64,16 @@ fun LinkBadge(type: LinkBadgeType, modifier: Modifier = Modifier) {
 
         is LinkBadgeType.Website -> WebsiteBadge(
             modifier = modifier,
+            icon = painterResource(Res.drawable.ic_link),
+            label = stringResource(Res.string.website),
+            sizedLike = type.sizedLike,
+            onClick = { uriHandler.openUri(type.url) },
+        )
+
+        is LinkBadgeType.GitHub -> WebsiteBadge(
+            modifier = modifier,
+            icon = painterResource(Res.drawable.ic_github),
+            label = stringResource(Res.string.github),
             sizedLike = type.sizedLike,
             onClick = { uriHandler.openUri(type.url) },
         )
@@ -97,7 +109,13 @@ private fun StoreBadge(
  * badges, the icon and label scale with the button's height.
  */
 @Composable
-private fun WebsiteBadge(sizedLike: StoreBadgeStyle, onClick: () -> Unit, modifier: Modifier = Modifier) {
+private fun WebsiteBadge(
+    icon: Painter,
+    label: String,
+    sizedLike: StoreBadgeStyle,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val artwork = painterResource(sizedLike.artwork).intrinsicSize
     BoxWithConstraints(
         modifier = modifier.aspectRatio(artwork.width / artwork.height, matchHeightConstraintsFirst = true),
@@ -117,12 +135,12 @@ private fun WebsiteBadge(sizedLike: StoreBadgeStyle, onClick: () -> Unit, modifi
         ) {
             Icon(
                 modifier = Modifier.size(height * 0.5f),
-                painter = painterResource(Res.drawable.ic_link),
+                painter = icon,
                 contentDescription = null,
                 tint = Color.White,
             )
             Text(
-                text = stringResource(Res.string.website),
+                text = label,
                 style = MaterialTheme.typography.titleLarge,
                 fontSize = with(LocalDensity.current) { (height * 0.4f).toSp() },
                 color = Color.White,
@@ -150,6 +168,10 @@ private fun LinkBadgePreview() {
                 modifier = Modifier.width(150.dp)
             )
             LinkBadge(
+                type = LinkBadgeType.GitHub("https://github.com/jasonctoms/HelpMyCity"),
+                modifier = Modifier.width(150.dp)
+            )
+            LinkBadge(
                 type = LinkBadgeType.Website("https://vipps.no", sizedLike = StoreBadgeStyle.PLAY_STORE),
                 modifier = Modifier.width(150.dp)
             )
@@ -173,6 +195,12 @@ sealed class LinkBadgeType(val url: String) {
         val linkUrl: String,
         val sizedLike: StoreBadgeStyle = StoreBadgeStyle.APP_STORE,
     ) : LinkBadgeType(linkUrl)
+
+    /** @param sizedLike the store badge this button sits beside, so both are exactly the same size */
+    data class GitHub(
+        val repoUrl: String,
+        val sizedLike: StoreBadgeStyle = StoreBadgeStyle.APP_STORE,
+    ) : LinkBadgeType(repoUrl)
 }
 
 enum class StoreBadgeStyle(internal val artwork: DrawableResource) {

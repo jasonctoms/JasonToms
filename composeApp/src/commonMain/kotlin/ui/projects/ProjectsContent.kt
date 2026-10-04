@@ -11,6 +11,7 @@ fun ProjectsContent() {
     Section(section = WebsiteSection.PROJECTS) {
         Picky()
         Breez()
+        HelpMyCity()
         HomeServer()
     }
 }
