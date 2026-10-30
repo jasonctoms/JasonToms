@@ -230,7 +230,7 @@ abstract class GenerateBlogIndex : DefaultTask() {
 /**
  * Generates the static, crawlable files search engines need to find and index the blog: `index.html`
  * (from [templateFile], with the post list filled in and a fresh cache-busting build version stamped
- * onto the composeApp.js reference) plus `sitemap.xml`, built from the same markdown files
+ * onto the composeApp.js reference) plus `sitemap.xml` and the RSS feed `feed.xml`, built from the same markdown files
  * [generateBlogIndex] reads. This keeps both in sync with the posts on disk without hand-editing
  * either one when a post is added.
  */
@@ -301,7 +301,53 @@ abstract class GenerateSeoFiles : DefaultTask() {
             |</urlset>
             |""".trimMargin()
         )
+
+        generateFeed(posts, baseUrl, out)
     }
+
+    /**
+     * Writes an RSS 2.0 feed of every post, in full, to `feed.xml`. Posts only have dates, so each
+     * one is stamped as published at midnight UTC, and the feed's own build date is the newest
+     * post's, which keeps the file unchanged between builds that add no posts.
+     */
+    private fun generateFeed(posts: List<BlogPostFile>, baseUrl: String, out: File) {
+        val feedUrl = "$baseUrl/feed.xml"
+        val items = posts.joinToString(separator = "") { (date, title, body) ->
+            val url = "$baseUrl/blog/$date"
+            """
+            |
+            |        <item>
+            |            <title>${title.escapedXml()}</title>
+            |            <link>$url</link>
+            |            <guid isPermaLink="true">$url</guid>
+            |            <pubDate>${date.toRfc822()}</pubDate>
+            |            <description><![CDATA[${SimpleMarkdown.toHtml(body).escapedCdata()}]]></description>
+            |        </item>""".trimMargin()
+        }
+        val lastBuildDate = posts.firstOrNull()?.let { "\n        <lastBuildDate>${it.date.toRfc822()}</lastBuildDate>" }.orEmpty()
+        out.resolve("feed.xml").writeText(
+            """
+            |<?xml version="1.0" encoding="UTF-8"?>
+            |<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+            |    <channel>
+            |        <title>Jason Toms — Blog</title>
+            |        <link>$baseUrl/blog</link>
+            |        <description>Human thoughts from a human mind</description>
+            |        <language>en-us</language>$lastBuildDate
+            |        <atom:link href="$feedUrl" rel="self" type="application/rss+xml"/>$items
+            |    </channel>
+            |</rss>
+            |""".trimMargin()
+        )
+    }
+
+    private fun LocalDate.toRfc822(): String =
+        atStartOfDay(java.time.ZoneOffset.UTC).format(DateTimeFormatter.RFC_1123_DATE_TIME)
+
+    private fun String.escapedXml() = escapedHtml().replace("\"", "&quot;")
+
+    /** A CDATA section ends at the first `]]>`, so one inside the content is split across two sections. */
+    private fun String.escapedCdata() = replace("]]>", "]]]]><![CDATA[>")
 
     /**
      * Writes one static, crawlable page per post to `blog/<date>.html`. Cloudflare's asset routing

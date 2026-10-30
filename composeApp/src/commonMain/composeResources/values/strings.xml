@@ -94,6 +94,7 @@
     <string name="blog_subtitle">Human thoughts from a human mind</string>
     <string name="blog_all_posts">All posts</string>
     <string name="blog_empty">Nothing here yet. Check back soon!</string>
+    <string name="blog_rss">Subscribe with RSS</string>
     <string name="blog_load_error">This post couldn't be loaded. Try refreshing the page.</string>
 
     <!-- Shared -->
